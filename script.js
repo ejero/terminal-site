@@ -53,17 +53,20 @@ inputBox.addEventListener('keydown', (e) => {
     // Clear the screen
 
     // Clear input after processing command
-    inputBox.value = '';
+    // inputBox.value = '';
+
+    // Remove current input box
+    document.body.removeChild(inputBox.previousSibling);  // remove the prompt
+    document.body.removeChild(inputBox);  // remove the input box
+
+    // Display a new input line
+    createNewInputLine();
+
+
   }
 })
 
 
-// Display the command the user entered
-function displayUserCommandEntered(command) {
-  const commandEntered = document.createElement('p');
-  commandEntered.textContent = `rosita@rosita:~$ ${command}`;
-  document.body.appendChild(commandEntered);
-}
 
 
 
@@ -82,56 +85,130 @@ function displayHelpCommands() {
 }
 
 
-// Creates a new prompt to span element and input
-function createInputPrompt() {
-  // Create an a new line input prompt so that the user can enter a new command
-  const newCommandPrompt = document.createElement('span');
-  newCommandPrompt.className.add('prompt');
-  newCommandPrompt.textContent = 'rosita@rosita:~$ ';
 
-  const newInput = inputBox.cloneNode();
-  newInput.value = '';
 
-  // Add new element to body of html page
-  document.body.appendChild(newCommandPrompt);
-  document.body.appendChild(newInput);
 
-  // Focus on the new input field
+
+
+function createNewInputLine() {
+  // Create the prompt, display user command, and the new input
+  const newPromptDiv = document.createElement('div');
+
+  const newPromptSpan = document.createElement('span');
+  newPromptSpan.className = 'prompt';
+  newPromptSpan.textContent = 'rosita@rosita.tech: ~ ';
+
+  const newInput = document.createElement('input');
+  newInput.type = 'text';
+  newInput.className = 'thick-caret-input';
+  newInput.name = 'name';
+  newInput.required = true;
+  newInput.minlength = '4';
+  newInput.maxlength = '18';
+  newInput.size = '10';
+
+  newPromptDiv.appendChild(newPromptSpan);
+  newPromptDiv.appendChild(newInput);
+
+  // Append the new elements to the body
+  document.body.appendChild(newPromptDiv);
+
+  // Update the reference to the inputBox to the new input and add focus
   inputBox = newInput;
-
-  // Re-focus on input field whenever it loses focus 
   inputBox.focus();
 
+  // Add the blur and keydown events to the new input
   inputBox.addEventListener('blur', () => {
     inputBox.focus();
   });
 
 
-
-  // Listen for when the user hits the return/enter key
   inputBox.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       // Get the value from the input box
       const inputValue = inputBox.value.trim().toLowerCase();
-
-      // Display the command the user entered
-      displayUserCommandEntered(inputValue);
 
       // Check if the user entered "help"
       if (inputValue === 'help') {
         displayHelpCommands();
       }
 
-      // Display a new input line
-      createInputPrompt();
+      // Remove current input box
+      document.body.removeChild(inputBox.parentNode);  // remove the entire div containing prompt and input
 
-      // Clear the current input after processing
-      inputBox.value = '';
+      // Display a new input line
+      createNewInputLine();
     }
   });
-
-
 }
+
+
+
+
+
+
+
+// // Display the command the user entered
+function displayUserCommandEntered(command) {
+  const commandEntered = document.createElement('p');
+  commandEntered.textContent = `rosita@rosita:~$ ${command}`;
+  document.body.appendChild(commandEntered);
+}
+
+
+
+
+
+// // Creates a new prompt to span element and input
+// function createInputPrompt() {
+//   // Create an a new line input prompt so that the user can enter a new command
+//   const newCommandPrompt = document.createElement('span');
+//   newCommandPrompt.className.add('prompt');
+//   newCommandPrompt.textContent = 'rosita@rosita:~$ ';
+
+//   const newInput = inputBox.cloneNode();
+//   newInput.value = '';
+
+//   // Add new element to body of html page
+//   document.body.appendChild(newCommandPrompt);
+//   document.body.appendChild(newInput);
+
+//   // Focus on the new input field
+//   inputBox = newInput;
+
+//   // Re-focus on input field whenever it loses focus 
+//   inputBox.focus();
+
+//   inputBox.addEventListener('blur', () => {
+//     inputBox.focus();
+//   });
+
+
+
+//   // Listen for when the user hits the return/enter key
+//   inputBox.addEventListener('keydown', (e) => {
+//     if (e.key === 'Enter') {
+//       // Get the value from the input box
+//       const inputValue = inputBox.value.trim().toLowerCase();
+
+//       // Display the command the user entered
+//       displayUserCommandEntered(inputValue);
+
+//       // Check if the user entered "help"
+//       if (inputValue === 'help') {
+//         displayHelpCommands();
+//       }
+
+//       // Display a new input line
+//       createInputPrompt();
+
+//       // Clear the current input after processing
+//       inputBox.value = '';
+//     }
+//   });
+
+
+// }
 
 
 
