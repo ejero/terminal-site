@@ -59,9 +59,9 @@ inputBox.addEventListener('keydown', (e) => {
 
 
 // Display the command the user entered
-function displayUserCommandEntered(commandEntered) {
+function displayUserCommandEntered(command) {
   const commandEntered = document.createElement('p');
-  commandEntered.textContent = `rosita@rosita:~$ ${commandEntered}`;
+  commandEntered.textContent = `rosita@rosita:~$ ${command}`;
   document.body.appendChild(commandEntered);
 }
 
@@ -76,11 +76,62 @@ function displayHelpCommands() {
   preElement.textContent = helpCommands.join('\n');
 
   // Insert the <pre> element before the input field
-  inputBox.parentNode.insertBefore(preElement, inputBox);
+  // inputBox.parentNode.insertBefore(preElement, inputBox);
+
+  document.body.appendChild(preElement);
 }
 
 
+// Creates a new prompt to span element and input
+function createInputPrompt() {
+  // Create an a new line input prompt so that the user can enter a new command
+  const newCommandPrompt = document.createElement('span');
+  newCommandPrompt.className.add('prompt');
+  newCommandPrompt.textContent = 'rosita@rosita:~$ ';
 
+  const newInput = inputBox.cloneNode();
+  newInput.value = '';
+
+  // Add new element to body of html page
+  document.body.appendChild(newCommandPrompt);
+  document.body.appendChild(newInput);
+
+  // Focus on the new input field
+  inputBox = newInput;
+
+  // Re-focus on input field whenever it loses focus 
+  inputBox.focus();
+
+  inputBox.addEventListener('blur', () => {
+    inputBox.focus();
+  });
+
+
+
+  // Listen for when the user hits the return/enter key
+  inputBox.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      // Get the value from the input box
+      const inputValue = inputBox.value.trim().toLowerCase();
+
+      // Display the command the user entered
+      displayUserCommandEntered(inputValue);
+
+      // Check if the user entered "help"
+      if (inputValue === 'help') {
+        displayHelpCommands();
+      }
+
+      // Display a new input line
+      createInputPrompt();
+
+      // Clear the current input after processing
+      inputBox.value = '';
+    }
+  });
+
+
+}
 
 
 
