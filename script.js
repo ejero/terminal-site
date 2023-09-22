@@ -30,6 +30,10 @@ inputBox.addEventListener('keydown', (e) => {
     /* Get the valye from the input field. Trim any white space and convert to lowercase to better handling */
     const inputValue = inputBox.value.trim().toLowerCase();
 
+    // Display the command the user entered
+    displayUserCommandEntered(inputValue);
+
+
     // Check if user entered the 'help' command
     if (inputValue === 'help') {
       // run function to display the help commands
@@ -52,6 +56,15 @@ inputBox.addEventListener('keydown', (e) => {
     inputBox.value = '';
   }
 })
+
+
+// Display the command the user entered
+function displayUserCommandEntered(commandEntered) {
+  const commandEntered = document.createElement('p');
+  commandEntered.textContent = `rosita@rosita:~$ ${commandEntered}`;
+  document.body.appendChild(commandEntered);
+}
+
 
 
 // Function to display the help commands
