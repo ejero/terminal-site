@@ -4,14 +4,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="reset.css" />
+  <link rel="stylesheet" href="style.css" />
   <title>Document</title>
 </head>
 
 <body>
-  <span class="prompt">rosita@rosita.tech: ~ $ </span><input type="text" id="name" name="name" required minlength="4"
-    maxlength="8" size="10">
+  <pre id="ascii-art">
+
+ __   __  ___           ___   __   __   __    ______    _______  _______  ___   _______  _______  __  
+|  | |  ||   |         |   | |  | |  |_|  |  |    _ |  |       ||       ||   | |       ||   _   ||  | 
+|  |_|  ||   |         |   | |__| |       |  |   | ||  |   _   ||  _____||   | |_     _||  |_|  ||  | 
+|       ||   |         |   |      |       |  |   |_||_ |  | |  || |_____ |   |   |   |  |       ||  | 
+|       ||   |  ___    |   |      |       |  |    __  ||  |_|  ||_____  ||   |   |   |  |       ||__| 
+|   _   ||   | |_  |   |   |      | ||_|| |  |   |  | ||       | _____| ||   |   |   |  |   _   | __  
+|__| |__||___|   |_|   |___|      |_|   |_|  |___|  |_||_______||_______||___|   |___|  |__| |__||__| 
+
+  </pre>
+  <p class="tab">Portfolio</p>
+  <p>rosita@rosita.tech portfolio: ~</p>
+  <p>Type <span id="helpCommand">help</span> to get a list of commands</p>
+  <span class="prompt">rosita@rosita.tech: ~ $ </span><input type="text" id="input" class="thick-caret-input"
+    name="name" required minlength="4" maxlength="18" size="10">
   <script src="script.js"></script>
 </body>
 

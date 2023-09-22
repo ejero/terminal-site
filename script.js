@@ -1,4 +1,4 @@
-/* List avaiable commands */
+/* List avaiable commands when user enters 'help' */
 const helpCommands = [
   'help       - Find out the commands you can run',
 
@@ -8,6 +8,28 @@ const helpCommands = [
 
   'contact    - See ways you can reach me...(no salker please)',
 
-  'clear      - Clear the screen'];
+  'clear      - Clear the screen'
+];
 
-console.log(helpCommands);
+
+// For input field to be focused on page load
+const inputBox = document.getElementById('input');
+
+//Inital focus on input field
+document.getElementById('input').focus();
+
+//Re-foccus on inout field whenever it loses focus
+inputBox.addEventListener('blur', () => {
+  inputBox.focus();
+});
+
+
+
+
+
+
+
+
+
+
+

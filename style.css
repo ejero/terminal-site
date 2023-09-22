@@ -1,7 +1,23 @@
 body{
   background-color: #ffffff;
+  margin: 20px;
 }
 
 .prompt{
   color: rgb(0, 0, 0);
 }
+
+#ascii-art {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+
+/* Remove border from input */
+
+
+#input{
+  border: none;
+  outline: none;
+  width: 240px;
+}
+
