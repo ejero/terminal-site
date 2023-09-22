@@ -24,7 +24,47 @@ inputBox.addEventListener('blur', () => {
 });
 
 
+// Listen for when the user hits the return/enter key
+inputBox.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    /* Get the valye from the input field. Trim any white space and convert to lowercase to better handling */
+    const inputValue = inputBox.value.trim().toLowerCase();
 
+    // Check if user entered the 'help' command
+    if (inputValue === 'help') {
+      // run function to display the help commands
+      displayHelpCommands();
+    }
+
+    // Check if user entered the 'about' command
+    // Display about me info
+
+    // Check if user entered the 'portfolio' command
+    // Display portfolio info
+
+    // Check if user entered the 'contact' command
+    // Display contact info
+
+    // Check if user entered the 'clear' command
+    // Clear the screen
+
+    // Clear input after processing command
+    inputBox.value = '';
+  }
+})
+
+
+// Function to display the help commands
+function displayHelpCommands() {
+
+  // Create a html <pre> element 
+  const preElement = document.createElement('pre');
+  // Convert array to string with new line characters
+  preElement.textContent = helpCommands.join('\n');
+
+  // Insert the <pre> element before the input field
+  inputBox.parentNode.insertBefore(preElement, inputBox);
+}
 
 
 
