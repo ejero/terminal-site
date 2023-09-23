@@ -30,8 +30,14 @@ inputBox.addEventListener('keydown', (e) => {
     /* Get the valye from the input field. Trim any white space and convert to lowercase to better handling */
     const inputValue = inputBox.value.trim().toLowerCase();
 
-    // Display the command the user entered
-    displayUserCommandEntered(inputValue);
+
+    // Append the user command next to the prompt
+    inputBox.previousSibling.textContent += inputValue;
+
+
+
+    // // Display the command the user entered
+    // displayUserCommandEntered(inputValue);
 
 
     // Check if user entered the 'help' command
@@ -52,21 +58,11 @@ inputBox.addEventListener('keydown', (e) => {
     // Check if user entered the 'clear' command
     // Clear the screen
 
-    // Clear input after processing command
-    // inputBox.value = '';
 
-    // Remove current input box
-    document.body.removeChild(inputBox.previousSibling);  // remove the prompt
-    document.body.removeChild(inputBox);  // remove the input box
-
-    // Display a new input line
+    // Create a new input line for the user to enter another command
     createNewInputLine();
-
-
   }
 })
-
-
 
 
 
@@ -83,9 +79,6 @@ function displayHelpCommands() {
 
   document.body.appendChild(preElement);
 }
-
-
-
 
 
 
@@ -125,90 +118,31 @@ function createNewInputLine() {
 
   inputBox.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
-      // Get the value from the input box
       const inputValue = inputBox.value.trim().toLowerCase();
 
-      // Check if the user entered "help"
+      // Append the user command next to the prompt
+      inputBox.previousSibling.appendChild(userCommand);
+
+      // check if user entered 'help' command
       if (inputValue === 'help') {
         displayHelpCommands();
       }
 
-      // Remove current input box
-      document.body.removeChild(inputBox.parentNode);  // remove the entire div containing prompt and input
-
-      // Display a new input line
+      // Creates a new line for command input
       createNewInputLine();
     }
   });
 }
 
 
-
-
-
-
-
 // // Display the command the user entered
-function displayUserCommandEntered(command) {
-  const commandEntered = document.createElement('p');
-  commandEntered.textContent = `rosita@rosita:~$ ${command}`;
-  document.body.appendChild(commandEntered);
-}
-
-
-
-
-
-// // Creates a new prompt to span element and input
-// function createInputPrompt() {
-//   // Create an a new line input prompt so that the user can enter a new command
-//   const newCommandPrompt = document.createElement('span');
-//   newCommandPrompt.className.add('prompt');
-//   newCommandPrompt.textContent = 'rosita@rosita:~$ ';
-
-//   const newInput = inputBox.cloneNode();
-//   newInput.value = '';
-
-//   // Add new element to body of html page
-//   document.body.appendChild(newCommandPrompt);
-//   document.body.appendChild(newInput);
-
-//   // Focus on the new input field
-//   inputBox = newInput;
-
-//   // Re-focus on input field whenever it loses focus 
-//   inputBox.focus();
-
-//   inputBox.addEventListener('blur', () => {
-//     inputBox.focus();
-//   });
-
-
-
-//   // Listen for when the user hits the return/enter key
-//   inputBox.addEventListener('keydown', (e) => {
-//     if (e.key === 'Enter') {
-//       // Get the value from the input box
-//       const inputValue = inputBox.value.trim().toLowerCase();
-
-//       // Display the command the user entered
-//       displayUserCommandEntered(inputValue);
-
-//       // Check if the user entered "help"
-//       if (inputValue === 'help') {
-//         displayHelpCommands();
-//       }
-
-//       // Display a new input line
-//       createInputPrompt();
-
-//       // Clear the current input after processing
-//       inputBox.value = '';
-//     }
-//   });
-
-
+// function displayUserCommandEntered(command) {
+//   const commandEntered = document.createElement('p');
+//   commandEntered.textContent = `rosita@rosita:~$ ${command}`;
+//   document.body.appendChild(commandEntered);
 // }
+
+
 
 
 
