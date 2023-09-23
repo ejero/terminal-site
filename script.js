@@ -1,22 +1,14 @@
 /* List avaiable commands when user enters 'help' */
-// const helpCommands = [
-//   "help       - Find out the commands you can run",
-
-//   "about      - Learn all about me",
-
-//   "portfolio  - See the list of projects I have made",
-
-//   "contact    - See ways you can reach me...(no salker please)",
-
-//   "clear      - Clear the screen",
-// ];
 
 const helpCommands = [
-  { cmd: "help", desc: "- Find out the commands you can run" },
-  { cmd: "about", desc: "- Learn all about me" },
-  { cmd: "portfolio", desc: "- See the list of projects I have made" },
-  { cmd: "contact", desc: "- See ways you can reach me...(no stalker please)" },
-  { cmd: "clear", desc: "- Clear the screen" },
+  { cmd: "help", desc: "- find out the commands you can run" },
+  { cmd: "about", desc: "- learn all about me" },
+  { cmd: "portfolio", desc: "- see the list of projects I have made" },
+  {
+    cmd: "contact",
+    desc: "- see ways you can reach me...(no stalkers please)",
+  },
+  { cmd: "clear", desc: "- clear the screen" },
 ];
 
 // For input field to be focused on page load
@@ -31,30 +23,61 @@ inputBox.addEventListener("blur", () => {
   inputBox.focus();
 });
 
+// Type writter effect to text
+function typeText(element, text, delay, callback) {
+  let i = 0;
+
+  function type() {
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, delay);
+    } else if (callback) {
+      callback();
+    }
+  }
+
+  type();
+}
+
 // Function to display the help commands
 function displayHelpCommands() {
   // Create a html <span> & <div> elements
-
   const commandDiv = document.createElement("div");
 
-  for (let command of helpCommands) {
-    const cmdSpan = document.createElement("span");
-    cmdSpan.className = "cmd";
-    cmdSpan.textContent = command.cmd;
+  function displayCommand(index) {
+    if (index < helpCommands.length) {
+      const cmdSpan = document.createElement("span");
+      cmdSpan.className = "cmd";
 
-    const descSpan = document.createElement("span");
-    descSpan.className = "desc";
-    descSpan.textContent = command.desc;
+      const descSpan = document.createElement("span");
+      descSpan.className = "desc";
 
-    const lineDiv = document.createElement("div");
-    lineDiv.appendChild(cmdSpan);
-    lineDiv.appendChild(descSpan);
-    commandDiv.appendChild(lineDiv);
+      const lineDiv = document.createElement("div");
+      lineDiv.appendChild(cmdSpan);
+      lineDiv.appendChild(descSpan);
+      commandDiv.appendChild(lineDiv);
+
+      typeText(cmdSpan, helpCommands[index].cmd, 25, () => {
+        typeText(descSpan, helpCommands[index].desc, 25, () => {
+          displayCommand(index + 1);
+        });
+      });
+    }
   }
 
   document.body.appendChild(commandDiv);
+  displayCommand(0);
 }
 
+// Mimics a terminal by clearing the screen
+function clearText() {
+  document.body.innerHTML = "";
+  // Recreate the initial prompt.
+  // createNewInputLine();
+}
+
+//  Function creates a new Input line
 function createNewInputLine() {
   // Create the prompt, display user command, and the new input
   const newPromptDiv = document.createElement("div");
@@ -90,14 +113,28 @@ function createNewInputLine() {
     inputBox.focus();
   });
 
+  // List of commands to run based on user prompt
+  const commandAction = {
+    help: displayHelpCommands,
+    clear: clearText,
+    // Rosita To Do - add other prompts
+    // Check if user entered the 'about' command
+    // Display about me info
+
+    // Check if user entered the 'portfolio' command
+    // Display portfolio info
+
+    // Check if user entered the 'contact' command
+    // Display contact info
+
+    // Check if user entered the 'clear' command
+    // Clear the screen
+  };
+
   // Listen for when the user hits the return/enter key
   inputBox.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       const inputValue = inputBox.value.trim().toLowerCase();
-
-      // Create a read-only text node with the command and append it to the current prompt
-      // const commandText = document.createTextNode(inputValue);
-      // inputBox.parentElement.insertBefore(commandText, inputBox);
 
       const commandSpan = document.createElement("span");
       commandSpan.className = "enteredCommand"; // This is a new class we'll define in CSS
@@ -107,23 +144,13 @@ function createNewInputLine() {
       // Remove the input box now that the command has been processed
       inputBox.remove();
 
-      // check if user entered 'help' command
-      if (inputValue === "help") {
-        // run function to display the help commands
-        displayHelpCommands();
+      // Check command the user has entered
+      // Check if the entered command exists in our commandAction object
+      if (commandAction[inputValue]) {
+        commandAction[inputValue]();
+      } else {
+        console.error("Error! Unknown command");
       }
-
-      // Check if user entered the 'about' command
-      // Display about me info
-
-      // Check if user entered the 'portfolio' command
-      // Display portfolio info
-
-      // Check if user entered the 'contact' command
-      // Display contact info
-
-      // Check if user entered the 'clear' command
-      // Clear the screen
 
       // Creates a new line for command input
       createNewInputLine();
