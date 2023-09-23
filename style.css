@@ -1,23 +1,34 @@
-body{
+body {
   background-color: #ffffff;
   margin: 20px;
 }
 
-.prompt{
+/* .prompt {
   color: rgb(0, 0, 0);
-}
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  bottom: 200px;
+} */
 
 #ascii-art {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
-
 
 /* Remove border from input */
 
-
-#input{
+#input {
   border: none;
   outline: none;
   width: 240px;
+  color: blue;
+  font-size: 32px;
+  font-family: "Courier New", Courier, monospace;
 }
 
+.prompt,
+.enteredCommand {
+  color: blue;
+  font-size: 22px;
+  font-family: "Courier New", Courier, monospace;
+}

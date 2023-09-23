@@ -48,12 +48,13 @@ function createNewInputLine() {
   // Adding input type as URL to disable 1password plugin
   newInput.type = "URL";
   newInput.id = "input";
-  newInput.className = "thick-caret-input";
+  newInput.className = "input-styles";
   newInput.name = "name";
   newInput.required = true;
   newInput.minlength = "4";
   newInput.maxlength = "18";
   newInput.size = "10";
+  newInput.setAttribute("class", "inputSyle");
 
   newPromptDiv.appendChild(newPromptSpan);
   newPromptDiv.appendChild(newInput);
@@ -76,8 +77,13 @@ function createNewInputLine() {
       const inputValue = inputBox.value.trim().toLowerCase();
 
       // Create a read-only text node with the command and append it to the current prompt
-      const commandText = document.createTextNode(inputValue);
-      inputBox.parentElement.insertBefore(commandText, inputBox);
+      // const commandText = document.createTextNode(inputValue);
+      // inputBox.parentElement.insertBefore(commandText, inputBox);
+
+      const commandSpan = document.createElement("span");
+      commandSpan.className = "enteredCommand"; // This is a new class we'll define in CSS
+      commandSpan.textContent = inputValue;
+      inputBox.parentElement.insertBefore(commandSpan, inputBox);
 
       // Remove the input box now that the command has been processed
       inputBox.remove();
