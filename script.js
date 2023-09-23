@@ -58,8 +58,8 @@ function displayHelpCommands() {
       lineDiv.appendChild(descSpan);
       commandDiv.appendChild(lineDiv);
 
-      typeText(cmdSpan, helpCommands[index].cmd, 25, () => {
-        typeText(descSpan, helpCommands[index].desc, 25, () => {
+      typeText(cmdSpan, helpCommands[index].cmd, 15, () => {
+        typeText(descSpan, helpCommands[index].desc, 15, () => {
           displayCommand(index + 1);
         });
       });
