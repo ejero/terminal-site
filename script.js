@@ -14,6 +14,9 @@ const helpCommands = [
 // For input field to be focused on page load
 let inputBox = document.getElementById("input");
 
+// Prompt container that displays all prompt and respones
+const commandsContainer = document.getElementById("commandsContainer");
+
 //Inital focus on input field
 //document.getElementById('input').focus();
 inputBox.focus();
@@ -66,14 +69,17 @@ function displayHelpCommands() {
     }
   }
 
-  document.body.appendChild(commandDiv);
+  // document.body.appendChild(commandDiv);
+  // displayCommand(0);
+
+  commandsContainer.appendChild(commandDiv);
   displayCommand(0);
 }
 
 // Mimics a terminal by clearing the screen
 function clearText() {
-  document.body.innerHTML = "";
-  // Recreate the initial prompt.
+  commandsContainer.innerHTML = "";
+  // A single prompt after clearing:
   // createNewInputLine();
 }
 
@@ -102,7 +108,8 @@ function createNewInputLine() {
   newPromptDiv.appendChild(newInput);
 
   // Append the new elements to the body
-  document.body.appendChild(newPromptDiv);
+  // document.body.appendChild(newPromptDiv);
+  commandsContainer.appendChild(newPromptDiv);
 
   // Update the reference to the inputBox to the new input and add focus
   inputBox = newInput;
