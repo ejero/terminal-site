@@ -3,27 +3,18 @@ body {
   margin: 20px;
 }
 
-/* .prompt {
-  color: rgb(0, 0, 0);
-  font-size: 30px;
-  margin-top: 20px;
-  margin-bottom: 30px;
-  bottom: 200px;
-} */
-
 #ascii-art {
   font-family: "Courier New", Courier, monospace;
 }
-
-/* Remove border from input */
 
 #input {
   border: none;
   outline: none;
   width: 240px;
   color: blue;
-  font-size: 32px;
+  font-size: 22px;
   font-family: "Courier New", Courier, monospace;
+  margin-left: 10px;
 }
 
 .prompt,
@@ -31,4 +22,29 @@ body {
   color: blue;
   font-size: 22px;
   font-family: "Courier New", Courier, monospace;
+}
+
+.prompt {
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.enteredCommand {
+  margin-left: 10px;
+}
+
+.cmd {
+  display: inline-block;
+  width: 100px; /* Size based on longest command */
+}
+
+.desc {
+  margin-left: 10px;
+  display: inline-block;
+}
+
+/* To add padding between commands */
+div > div {
+  padding: 12px 0;
 }

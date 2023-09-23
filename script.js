@@ -1,14 +1,22 @@
 /* List avaiable commands when user enters 'help' */
+// const helpCommands = [
+//   "help       - Find out the commands you can run",
+
+//   "about      - Learn all about me",
+
+//   "portfolio  - See the list of projects I have made",
+
+//   "contact    - See ways you can reach me...(no salker please)",
+
+//   "clear      - Clear the screen",
+// ];
+
 const helpCommands = [
-  "help       - Find out the commands you can run",
-
-  "about      - Learn all about me",
-
-  "portfolio  - See the list of projects I have made",
-
-  "contact    - See ways you can reach me...(no salker please)",
-
-  "clear      - Clear the screen",
+  { cmd: "help", desc: "- Find out the commands you can run" },
+  { cmd: "about", desc: "- Learn all about me" },
+  { cmd: "portfolio", desc: "- See the list of projects I have made" },
+  { cmd: "contact", desc: "- See ways you can reach me...(no stalker please)" },
+  { cmd: "clear", desc: "- Clear the screen" },
 ];
 
 // For input field to be focused on page load
@@ -25,15 +33,26 @@ inputBox.addEventListener("blur", () => {
 
 // Function to display the help commands
 function displayHelpCommands() {
-  // Create a html <pre> element
-  const preElement = document.createElement("pre");
-  // Convert array to string with new line characters
-  preElement.textContent = helpCommands.join("\n");
+  // Create a html <span> & <div> elements
 
-  // Insert the <pre> element before the input field
-  // inputBox.parentNode.insertBefore(preElement, inputBox);
+  const commandDiv = document.createElement("div");
 
-  document.body.appendChild(preElement);
+  for (let command of helpCommands) {
+    const cmdSpan = document.createElement("span");
+    cmdSpan.className = "cmd";
+    cmdSpan.textContent = command.cmd;
+
+    const descSpan = document.createElement("span");
+    descSpan.className = "desc";
+    descSpan.textContent = command.desc;
+
+    const lineDiv = document.createElement("div");
+    lineDiv.appendChild(cmdSpan);
+    lineDiv.appendChild(descSpan);
+    commandDiv.appendChild(lineDiv);
+  }
+
+  document.body.appendChild(commandDiv);
 }
 
 function createNewInputLine() {
@@ -42,7 +61,7 @@ function createNewInputLine() {
 
   const newPromptSpan = document.createElement("span");
   newPromptSpan.className = "prompt";
-  newPromptSpan.textContent = "rosita@rosita.tech: ~ ";
+  newPromptSpan.textContent = "rosita@rosita.tech ~  ";
 
   const newInput = document.createElement("input");
   // Adding input type as URL to disable 1password plugin
