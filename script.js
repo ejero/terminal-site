@@ -22,6 +22,8 @@ const aboutMe = `
 `;
 
 // Stores the history of commands the user enters
+let commandHistory = [];
+let currentHistoryIndex = -1;
 
 // For input field to be focused on page load
 let inputBox = document.getElementById("input");
@@ -158,18 +160,37 @@ function createNewInputLine() {
 
   // Listen for when the user hits the return/enter key
   inputBox.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
+    // Arrow up to navigate back in history
+    if (e.key === "ArrowUp" && currentHistoryIndex > 0) {
+      currentHistoryIndex--;
+      inputBox.value = commandHistory[currentHistoryIndex];
+      e.preventDefault(); // Prevent cursor movement
+    }
+    // Arrow down to navigate forward in history
+    else if (
+      e.key === "ArrowDown" &&
+      currentHistoryIndex < commandHistory.length - 1
+    ) {
+      currentHistoryIndex++;
+      inputBox.value = commandHistory[currentHistoryIndex];
+      e.preventDefault(); // Prevent cursor movement
+    }
+    // Enter key logic
+    else if (e.key === "Enter") {
       const inputValue = inputBox.value.trim().toLowerCase();
 
+      // Store the command in the history
+      commandHistory.push(inputValue);
+      currentHistoryIndex = commandHistory.length; // Set to the end of the command history
+
       const commandSpan = document.createElement("span");
-      commandSpan.className = "enteredCommand"; // This is a new class we'll define in CSS
+      commandSpan.className = "enteredCommand";
       commandSpan.textContent = inputValue;
       inputBox.parentElement.insertBefore(commandSpan, inputBox);
 
       // Remove the input box now that the command has been processed
       inputBox.remove();
 
-      // Check command the user has entered
       // Check if the entered command exists in our commandAction object
       if (commandAction[inputValue]) {
         commandAction[inputValue]();
