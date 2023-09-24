@@ -26,8 +26,8 @@ body {
 
 .prompt {
   display: inline-block;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .enteredCommand {
@@ -46,5 +46,24 @@ body {
 
 /* To add padding between commands */
 div > div {
-  padding: 12px 0;
+  padding: 10px 0;
+}
+
+/* About me Styling */
+.about-section p {
+  font-size: 15px;
+  color: #888;
+  margin: 10px 0;
+  line-height: 1.5;
+  text-align: justify;
+  width: 90vw;
+  font-size: 22px;
+}
+
+/* .about-section p:first-child {
+  font-weight: bold; 
+} */
+
+.about-section p:last-child {
+  font-style: italic; /* just another example, you can change this */
 }

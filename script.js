@@ -11,6 +11,18 @@ const helpCommands = [
   { cmd: "clear", desc: "- clear the screen" },
 ];
 
+const aboutMe = `
+<p>Hello there 👋🏽! My name is Rosita Emakpo. I am a Tampa Bay native. I graduated of Palomar College, where I earned an Associate of Science degree in Computer Science. Now, I work as a Software Engineer Associate at Cisco in San Jose, where I dive deep into the world of web development. Got a thing for JavaScript or React? Me too! I love turning complex challenges into sleek, user-friendly solutions.</p>
+
+<p>Before joining the Cisco family,  I was an integral part of the Sharp Healthcare team in San Diego, working as an Access Specialist in Support Services. In this capacity, I wore many hats - from assisting with practice management reports to ensuring the accuracy of comments left by patient representatives. My role also entailed working closely with Access Analysts to provide top-tier support.</p>
+
+<p>When I'm not immersed in code, you'll find me whipping up dishes from all corners of the globe (always up for recipe swaps!). Movie marathons? Count me in! I'm also threading my way into the world of sewing and embracing the linguistic adventure of learning Mandarin Chinese.</p>
+
+<p>Thank you for stopping by! Fancy a chat? I'm all ears! Let's connect.</p>
+`;
+
+// Stores the history of commands the user enters
+
 // For input field to be focused on page load
 let inputBox = document.getElementById("input");
 
@@ -76,6 +88,13 @@ function displayHelpCommands() {
   displayCommand(0);
 }
 
+function displayAboutMe() {
+  const aboutMeDiv = document.createElement("div");
+  aboutMeDiv.className = "about-section"; // Adding a class
+  aboutMeDiv.innerHTML = aboutMe;
+  commandsContainer.appendChild(aboutMeDiv);
+}
+
 // Mimics a terminal by clearing the screen
 function clearText() {
   commandsContainer.innerHTML = "";
@@ -90,7 +109,7 @@ function createNewInputLine() {
 
   const newPromptSpan = document.createElement("span");
   newPromptSpan.className = "prompt";
-  newPromptSpan.textContent = "rosita@rosita.tech ~  ";
+  newPromptSpan.textContent = "rosita@rosita.tech ~  $";
 
   const newInput = document.createElement("input");
   // Adding input type as URL to disable 1password plugin
@@ -123,10 +142,9 @@ function createNewInputLine() {
   // List of commands to run based on user prompt
   const commandAction = {
     help: displayHelpCommands,
+    about: displayAboutMe,
     clear: clearText,
     // Rosita To Do - add other prompts
-    // Check if user entered the 'about' command
-    // Display about me info
 
     // Check if user entered the 'portfolio' command
     // Display portfolio info
