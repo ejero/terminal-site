@@ -21,6 +21,34 @@ When I'm not immersed in code, you'll find me whipping up dishes from all corner
 Thank you for stopping by! Fancy a chat? I'm all ears! Let's connect.
 `;
 
+const portfolio = [
+  {
+    projectTitle: "String to Cut",
+    desc: "This is a small web application that accepts a POST request and returns a JSON object with a string containing every third letter of the original string.",
+    technologiesUsed: "Python, Flask, HTML",
+    githubLink: "https://github.com/ejero/string_to_cut",
+  },
+  {
+    projectTitle: "Salon Project ",
+    desc: "A hair salon application example for all curl types",
+    technologiesUsed: "JavaScript, React, PocketBase, Chatwoot",
+    githubLink: "https://github.com/ejero/salon-project",
+  },
+  {
+    projectTitle: "Jebin Backend ",
+    desc: "A backend applicationt to manager users and accounts hosted on a Linode server",
+    technologiesUsed:
+      "JavaScrit, Express, Squelize, SQLite3, Jest, GitHub Actions",
+    githubLink: "https://github.com/ejero/Jebin-Backend/tree/main",
+  },
+  {
+    projectTitle: "Books Seach ",
+    desc: "BooksSeach is a Python project that uses Google Books API",
+    technologiesUsed: "Google Client API, Python, API key",
+    githubLink: "https://github.com/ejero/Book-Seach_Google_Books-API",
+  },
+];
+
 // Stores the history of commands the user enters
 let commandHistory = [];
 let currentHistoryIndex = -1;
@@ -90,9 +118,43 @@ function displayHelpCommands() {
   displayCommand(0);
 }
 
+// Displays the portfolio section of my website
+function displayPortfolioCommand() {
+  const portfolioDiv = document.createElement("div");
+  portfolioDiv.className = "portfolio-style";
+
+  for (let project of portfolio) {
+    const projectTitleSpan = document.createElement("span");
+    projectTitleSpan.className = "projectTitle";
+    projectTitleSpan.textContent = project.projectTitle;
+
+    const descSpan = document.createElement("span");
+    descSpan.className = "projectDesc";
+    descSpan.textContent = project.desc;
+
+    const technologiesUsedSpan = document.createElement("span");
+    technologiesUsedSpan.className = "technologiesUsed";
+    technologiesUsedSpan.textContent = project.technologiesUsed;
+
+    const githubLinkSpan = document.createElement("span");
+    githubLinkSpan.className = "githubLink";
+    githubLinkSpan.innerHTML = `<a href="${project.githubLink}" target="_blank">GitHub Link</a>`;
+
+    const lineDiv = document.createElement("div");
+    lineDiv.appendChild(projectTitleSpan);
+    lineDiv.appendChild(descSpan);
+    lineDiv.appendChild(technologiesUsedSpan);
+    lineDiv.appendChild(githubLinkSpan);
+    portfolioDiv.appendChild(lineDiv);
+  }
+
+  // Assuming "commandsContainer" is the main container where you want to display your content.
+  commandsContainer.appendChild(portfolioDiv);
+}
+
+// Displays the about me section of my website
 function displayAboutMe() {
   const aboutMeDiv = document.createElement("div");
-  
 
   // Split the aboutMe content into paragraphs
   //const paragraphs = aboutMe.trim().split("\n");
@@ -105,11 +167,11 @@ function displayAboutMe() {
       paraElement.className = "about-section";
 
       // Using my typeText function to type out the content of this paragraph
-      typeText(paraElement, paragraphs[index].trim(), 3, () => {
+      typeText(paraElement, paragraphs[index].trim(), 1, () => {
         // Add a spacer after every paragraph except the last one
         if (index < paragraphs.length - 1) {
           const spacer = document.createElement("div");
-          spacer.style.height = "10px"; // Adjust the height as required
+          spacer.style.height = "5px"; // Adjust the height as required
           aboutMeDiv.appendChild(spacer);
         }
 
@@ -173,6 +235,7 @@ function createNewInputLine() {
     help: displayHelpCommands,
     about: displayAboutMe,
     clear: clearText,
+    portfolio: displayPortfolioCommand,
     // Rosita To Do - add other prompts
 
     // Check if user entered the 'portfolio' command
