@@ -12,13 +12,13 @@ const helpCommands = [
 ];
 
 const aboutMe = `
-<p>Hello there 👋🏽! My name is Rosita Emakpo. I am a Tampa Bay native. I graduated of Palomar College, where I earned an Associate of Science degree in Computer Science. Now, I work as a Software Engineer Associate at Cisco in San Jose, where I dive deep into the world of web development. Got a thing for JavaScript or React? Me too! I love turning complex challenges into sleek, user-friendly solutions.</p>
+Hello there 👋🏽! My name is Rosita Emakpo. I am a Tampa Bay native. I graduated of Palomar College, where I earned an Associate of Science degree in Computer Science. Now, I work as a Software Engineer Associate at Cisco in San Jose, where I dive deep into the world of web development. Got a thing for JavaScript or React? Me too! I love turning complex challenges into sleek, user-friendly solutions.
 
-<p>Before joining the Cisco family,  I was an integral part of the Sharp Healthcare team in San Diego, working as an Access Specialist in Support Services. In this capacity, I wore many hats - from assisting with practice management reports to ensuring the accuracy of comments left by patient representatives. My role also entailed working closely with Access Analysts to provide top-tier support.</p>
+Before joining the Cisco family,  I was an integral part of the Sharp Healthcare team in San Diego, working as an Access Specialist in Support Services. In this capacity, I wore many hats - from assisting with practice management reports to ensuring the accuracy of comments left by patient representatives. My role also entailed working closely with Access Analysts to provide top-tier support.
 
-<p>When I'm not immersed in code, you'll find me whipping up dishes from all corners of the globe (always up for recipe swaps!). Movie marathons? Count me in! I'm also threading my way into the world of sewing and embracing the linguistic adventure of learning Mandarin Chinese.</p>
+When I'm not immersed in code, you'll find me whipping up dishes from all corners of the globe (always up for recipe swaps!). Movie marathons? Count me in! I'm also threading my way into the world of sewing and embracing the linguistic adventure of learning Mandarin Chinese.
 
-<p>Thank you for stopping by! Fancy a chat? I'm all ears! Let's connect.</p>
+Thank you for stopping by! Fancy a chat? I'm all ears! Let's connect.
 `;
 
 // Stores the history of commands the user enters
@@ -92,16 +92,43 @@ function displayHelpCommands() {
 
 function displayAboutMe() {
   const aboutMeDiv = document.createElement("div");
-  aboutMeDiv.className = "about-section"; // Adding a class
-  aboutMeDiv.innerHTML = aboutMe;
+  
+
+  // Split the aboutMe content into paragraphs
+  //const paragraphs = aboutMe.trim().split("\n");
+  const paragraphs = aboutMe.split("\n").filter((para) => para.trim() !== "");
+
+  function typeParagraph(index) {
+    if (index < paragraphs.length) {
+      const paraElement = document.createElement("p");
+      aboutMeDiv.appendChild(paraElement);
+      paraElement.className = "about-section";
+
+      // Using my typeText function to type out the content of this paragraph
+      typeText(paraElement, paragraphs[index].trim(), 3, () => {
+        // Add a spacer after every paragraph except the last one
+        if (index < paragraphs.length - 1) {
+          const spacer = document.createElement("div");
+          spacer.style.height = "10px"; // Adjust the height as required
+          aboutMeDiv.appendChild(spacer);
+        }
+
+        typeParagraph(index + 1);
+      });
+    }
+  }
+
+  // Start the typing for the first paragraph
+  typeParagraph(0);
+
+  // Add output to html id commandsContainer
+  const commandsContainer = document.getElementById("commandsContainer");
   commandsContainer.appendChild(aboutMeDiv);
 }
 
 // Mimics a terminal by clearing the screen
 function clearText() {
   commandsContainer.innerHTML = "";
-  // A single prompt after clearing:
-  // createNewInputLine();
 }
 
 //  Function creates a new Input line

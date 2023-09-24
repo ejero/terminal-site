@@ -50,20 +50,8 @@ div > div {
 }
 
 /* About me Styling */
-.about-section p {
-  font-size: 15px;
-  color: #888;
-  margin: 10px 0;
-  line-height: 1.5;
-  text-align: justify;
-  width: 90vw;
-  font-size: 22px;
-}
-
-/* .about-section p:first-child {
-  font-weight: bold; 
-} */
-
-.about-section p:last-child {
-  font-style: italic; /* just another example, you can change this */
+.about-section {
+  color: rgb(65, 67, 65);
+  width: 80vw;
+  font-size: 20px;
 }
