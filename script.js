@@ -10,7 +10,7 @@ const helpCommands = [
   },
   { cmd: "clear", desc: "- clear the screen" },
 ];
-
+  
 const aboutMe = `
 Hello there 👋🏽! My name is Rosita Emakpo. I am a Tampa Bay native. I graduated of Palomar College, where I earned an Associate of Science degree in Computer Science. Now, I work as a Software Engineer Associate at Cisco in San Jose, where I dive deep into the world of web development. Got a thing for JavaScript or React? Me too! I love turning complex challenges into sleek, user-friendly solutions.
 
@@ -31,22 +31,30 @@ const portfolio = [
   {
     projectTitle: "Salon Project ",
     desc: "A hair salon application example for all curl types",
-    technologiesUsed: "JavaScript, React, PocketBase, Chatwoot",
-    githubLink: "https://github.com/ejero/salon-project",
+    technologiesUsed: "JavaScript, React, PocketBase, Chatwoot ",
+    githubLink: " https://github.com/ejero/salon-project ",
   },
   {
     projectTitle: "Jebin Backend ",
     desc: "A backend applicationt to manager users and accounts hosted on a Linode server",
     technologiesUsed:
       "JavaScrit, Express, Squelize, SQLite3, Jest, GitHub Actions",
-    githubLink: "https://github.com/ejero/Jebin-Backend/tree/main",
+    githubLink: " https://github.com/ejero/Jebin-Backend/tree/main ",
   },
   {
     projectTitle: "Books Seach ",
     desc: "BooksSeach is a Python project that uses Google Books API",
-    technologiesUsed: "Google Client API, Python, API key",
-    githubLink: "https://github.com/ejero/Book-Seach_Google_Books-API",
+    technologiesUsed: "Google Client API, Python, API key ",
+    githubLink: " https://github.com/ejero/Book-Seach_Google_Books-API",
   },
+];
+
+
+const contact = [
+  { how: "GitHub ", link: "https://github.com/ejero" },
+  { how: "LinkedIn ", link: "https://www.linkedin.com/in/rosita-emakpo/" },
+  { how: "Email ", link: "rositaemakpo@gmail.com" },
+  { how: "X (Formally Twitter) ", link: "https://twitter.com/lovelittlerose" },
 ];
 
 // Stores the history of commands the user enters
@@ -83,6 +91,42 @@ function typeText(element, text, delay, callback) {
   }
 
   type();
+}
+
+// Function to diplsay the contact commands
+function displayContactCommands() {
+  // Create a html <span> & <div> elements
+  const contactDiv = document.createElement("div");
+
+  function displayContact(index) {
+    if (index < contact.length) {
+      const howSpan = document.createElement("span");
+      howSpan.className = "how";
+      howSpan.className = "howDesc"
+
+      const linkSpan = document.createElement("span");
+      linkSpan.className = "link";
+      linkSpan.innerHTML = `<a href="${contact[index].link}" target="_blank">${contact[index].link}</a>`;
+      linkSpan.className = "linkDesc"
+
+
+      // githubLinkSpan.innerHTML = `<a href="${project.githubLink}" target="_blank">GitHub Link</a>`;
+
+      const lineDiv = document.createElement("div");
+      lineDiv.appendChild(howSpan);
+      lineDiv.appendChild(linkSpan);
+      contactDiv.appendChild(lineDiv);
+
+      typeText(howSpan, contact[index].how, 15, () => {
+        typeText(linkSpan, contact[index].link, 15, () => {
+          displayContact(index + 1);
+        });
+      });
+    }
+  }
+
+  commandsContainer.appendChild(contactDiv);
+  displayContact(0);
 }
 
 // Function to display the help commands
@@ -318,16 +362,7 @@ function createNewInputLine() {
     about: displayAboutMe,
     clear: clearText,
     portfolio: displayPortfolioCommand,
-    // Rosita To Do - add other prompts
-
-    // Check if user entered the 'portfolio' command
-    // Display portfolio info
-
-    // Check if user entered the 'contact' command
-    // Display contact info
-
-    // Check if user entered the 'clear' command
-    // Clear the screen
+    contact: displayContactCommands,
   };
 
   // Listen for when the user hits the return/enter key

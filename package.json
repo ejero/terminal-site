@@ -1,0 +1,24 @@
+{
+  "name": "terminal_site",
+  "version": "1.0.0",
+  "description": "Terminal Portfolio",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ejero/terminal-site.git"
+  },
+  "author": "Rosita Emakpo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ejero/terminal-site/issues"
+  },
+  "homepage": "https://github.com/ejero/terminal-site#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "sequelize": "^6.33.0",
+    "sqlite3": "^5.1.6"
+  }
+}
