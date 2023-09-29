@@ -8,9 +8,14 @@ const helpCommands = [
     cmd: "contact",
     desc: "- see ways you can reach me...(no stalkers please)",
   },
+  {
+    cmd: "message",
+    desc: "- Send me a message. I'd love to hear from you!",
+  },
+
   { cmd: "clear", desc: "- clear the screen" },
 ];
-  
+
 const aboutMe = `
 Hello there 👋🏽! My name is Rosita Emakpo. I am a Tampa Bay native. I graduated of Palomar College, where I earned an Associate of Science degree in Computer Science. Now, I work as a Software Engineer Associate at Cisco in San Jose, where I dive deep into the world of web development. Got a thing for JavaScript or React? Me too! I love turning complex challenges into sleek, user-friendly solutions.
 
@@ -155,55 +160,70 @@ function displayHelpCommands() {
     }
   }
 
-  // document.body.appendChild(commandDiv);
-  // displayCommand(0);
 
   commandsContainer.appendChild(commandDiv);
   displayCommand(0);
 }
 
-// Displays the portfolio section of my website
-// function displayPortfolioCommand() {
-//   const portfolioDiv = document.createElement("div");
-//   portfolioDiv.className = "portfolio-style";
 
-//   function displayPortfolio(index) {
-//     if (index < portfolio.length) {
-//       const lineDiv = document.createElement("div");
+function sendMessage() {
+  const sendMessageDiv = document.createElement("div");
+  sendMessageDiv.className = "message-style";
 
-//       const projectTitleSpan = document.createElement("span");
-//       projectTitleSpan.className = "projectTitle";
-//       projectTitleSpan.textContent = `Project Title: "${portfolio[index].projectTitle}",`;
-//       lineDiv.appendChild(projectTitleSpan);
-//       lineDiv.appendChild(document.createElement("br")); // Adding line break
+  const form = document.createElement("form");
+  form.className = "form-style";
+  form.action = "https://formspree.io/f/mnqogjzv";
+  form.method = "POST";
 
-//       const descSpan = document.createElement("span");
-//       descSpan.className = "projectDesc";
-//       descSpan.textContent = `Description: "${portfolio[index].desc}",`;
-//       lineDiv.appendChild(descSpan);
-//       lineDiv.appendChild(document.createElement("br")); // Adding line break
+  // Create Name input
+  const name = document.createElement("input");
+  name.className = "input-style";
+  name.type = "text";
+  name.name = "name";
+  name.placeholder = "Name";
+  name.required = true;
 
-//       const technologiesUsedSpan = document.createElement("span");
-//       technologiesUsedSpan.className = "technologiesUsed";
-//       technologiesUsedSpan.textContent = `Technologies Used: "${portfolio[index].technologiesUsed}",`;
-//       lineDiv.appendChild(technologiesUsedSpan);
-//       lineDiv.appendChild(document.createElement("br")); // Adding line break
+  // Create Email input
+  const email = document.createElement("input");
+  email.className = "input-style";
+  email.type = "text";
+  email.name = "email";
+  email.placeholder = "Email";
+  email.required = true;
 
-//       const githubLinkSpan = document.createElement("span");
-//       githubLinkSpan.className = "githubLink";
-//       githubLinkSpan.innerHTML = `<a href="${portfolio[index].githubLink}" target="_blank"> Github link</a>`;
-//       lineDiv.appendChild(githubLinkSpan);
+  // Create Message textarea
+  const message = document.createElement("textarea");
+  message.className = "input-style";
+  message.name = "message";
+  message.placeholder = "Message";
+  message.required = true;
 
-//       portfolioDiv.appendChild(lineDiv);
+  const button = document.createElement("button");
+  button.className = "button-style";
+  button.type = "submit";
+  button.textContent = "Send Message";
 
-//       // Continue displaying the next project after the current one is displayed
-//       displayPortfolio(index + 1);
-//     }
-//   }
+  // Append elements to the form
+  form.appendChild(name);
+  form.appendChild(document.createElement("br"));
+  form.appendChild(email);
+  form.appendChild(document.createElement("br"));
+  form.appendChild(message);
+  form.appendChild(document.createElement("br"));
+  form.appendChild(button);
 
-//   commandsContainer.appendChild(portfolioDiv);
-//   displayPortfolio(0);
-// }
+  // Append form to the container div
+  sendMessageDiv.appendChild(form);
+
+  // Append the container div to the commandsContainer
+  commandsContainer.appendChild(sendMessageDiv);
+}
+
+
+
+
+
+
 function displayPortfolioCommand() {
   // Get the commandsContainer to which you will append the portfolio content.
   const commandsContainer = document.getElementById("commandsContainer");
@@ -362,6 +382,7 @@ function createNewInputLine() {
     about: displayAboutMe,
     clear: clearText,
     portfolio: displayPortfolioCommand,
+    message: sendMessage,
     contact: displayContactCommands,
   };
 
