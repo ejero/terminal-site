@@ -24,8 +24,8 @@ Thank you for stopping by! Fancy a chat? I'm all ears! Let's connect.
 const portfolio = [
   {
     projectTitle: "String to Cut",
-    desc: "This is a small web application that accepts a POST request and returns a JSON object with a string containing every third letter of the original string.",
-    technologiesUsed: "Python, Flask, HTML",
+    desc: "Small web app that accepts a POST request and returns a JSON object",
+    technologiesUsed: "Technologies used: Python, Flask, HTML",
     githubLink: "https://github.com/ejero/string_to_cut",
   },
   {
@@ -119,36 +119,118 @@ function displayHelpCommands() {
 }
 
 // Displays the portfolio section of my website
+// function displayPortfolioCommand() {
+//   const portfolioDiv = document.createElement("div");
+//   portfolioDiv.className = "portfolio-style";
+
+//   function displayPortfolio(index) {
+//     if (index < portfolio.length) {
+//       const lineDiv = document.createElement("div");
+
+//       const projectTitleSpan = document.createElement("span");
+//       projectTitleSpan.className = "projectTitle";
+//       projectTitleSpan.textContent = `Project Title: "${portfolio[index].projectTitle}",`;
+//       lineDiv.appendChild(projectTitleSpan);
+//       lineDiv.appendChild(document.createElement("br")); // Adding line break
+
+//       const descSpan = document.createElement("span");
+//       descSpan.className = "projectDesc";
+//       descSpan.textContent = `Description: "${portfolio[index].desc}",`;
+//       lineDiv.appendChild(descSpan);
+//       lineDiv.appendChild(document.createElement("br")); // Adding line break
+
+//       const technologiesUsedSpan = document.createElement("span");
+//       technologiesUsedSpan.className = "technologiesUsed";
+//       technologiesUsedSpan.textContent = `Technologies Used: "${portfolio[index].technologiesUsed}",`;
+//       lineDiv.appendChild(technologiesUsedSpan);
+//       lineDiv.appendChild(document.createElement("br")); // Adding line break
+
+//       const githubLinkSpan = document.createElement("span");
+//       githubLinkSpan.className = "githubLink";
+//       githubLinkSpan.innerHTML = `<a href="${portfolio[index].githubLink}" target="_blank"> Github link</a>`;
+//       lineDiv.appendChild(githubLinkSpan);
+
+//       portfolioDiv.appendChild(lineDiv);
+
+//       // Continue displaying the next project after the current one is displayed
+//       displayPortfolio(index + 1);
+//     }
+//   }
+
+//   commandsContainer.appendChild(portfolioDiv);
+//   displayPortfolio(0);
+// }
 function displayPortfolioCommand() {
+  // Get the commandsContainer to which you will append the portfolio content.
+  const commandsContainer = document.getElementById("commandsContainer");
+
+  // Create the main container for the portfolio
   const portfolioDiv = document.createElement("div");
   portfolioDiv.className = "portfolio-style";
 
-  for (let project of portfolio) {
-    const projectTitleSpan = document.createElement("span");
-    projectTitleSpan.className = "projectTitle";
-    projectTitleSpan.textContent = project.projectTitle;
+  function displayPortfolio() {
+    const gridParentDiv = document.createElement("div");
+    gridParentDiv.className = "parent";
 
-    const descSpan = document.createElement("span");
-    descSpan.className = "projectDesc";
-    descSpan.textContent = project.desc;
+    portfolio.forEach((project, index) => {
+      const projectDiv = document.createElement("div");
+      switch (index) {
+        case 0:
+          projectDiv.className = "div1";
+          break;
+        case 1:
+          projectDiv.className = "div2";
+          break;
+        case 2:
+          projectDiv.className = "div3";
+          break;
+        case 3:
+          projectDiv.className = "div4";
+          break;
+        default:
+          // If there are more projects than expected
+          console.error("More projects than expected");
+          return;
+      }
 
-    const technologiesUsedSpan = document.createElement("span");
-    technologiesUsedSpan.className = "technologiesUsed";
-    technologiesUsedSpan.textContent = project.technologiesUsed;
+      const title = document.createElement("span");
+      title.className = "projectTitle";
+      title.textContent = ` ${project.projectTitle}`;
 
-    const githubLinkSpan = document.createElement("span");
-    githubLinkSpan.className = "githubLink";
-    githubLinkSpan.innerHTML = `<a href="${project.githubLink}" target="_blank">GitHub Link</a>`;
+      const desc = document.createElement("span");
+      desc.className = "projectDesc";
+      desc.textContent = `${project.desc}`;
 
-    const lineDiv = document.createElement("div");
-    lineDiv.appendChild(projectTitleSpan);
-    lineDiv.appendChild(descSpan);
-    lineDiv.appendChild(technologiesUsedSpan);
-    lineDiv.appendChild(githubLinkSpan);
-    portfolioDiv.appendChild(lineDiv);
+      const tech = document.createElement("span");
+      tech.className = "technologiesUsed";
+      tech.textContent = ` ${project.technologiesUsed}`;
+
+      const link = document.createElement("a");
+      link.className = "githubLink";
+      link.href = project.githubLink;
+      link.target = "_blank";
+      link.textContent = "Github link";
+
+      // Append elements to the projectDiv
+      projectDiv.appendChild(title);
+      projectDiv.appendChild(document.createElement("br"));
+      projectDiv.appendChild(desc);
+      projectDiv.appendChild(document.createElement("br"));
+      projectDiv.appendChild(tech);
+      projectDiv.appendChild(document.createElement("br"));
+      projectDiv.appendChild(link);
+
+      // Append projectDiv to the parent grid
+      gridParentDiv.appendChild(projectDiv);
+    });
+
+    // Append the parent grid to the portfolioDiv
+    portfolioDiv.appendChild(gridParentDiv);
   }
 
-  // Assuming "commandsContainer" is the main container where you want to display your content.
+  displayPortfolio();
+
+  // Appending the portfolioDiv to the commandsContainer.
   commandsContainer.appendChild(portfolioDiv);
 }
 
