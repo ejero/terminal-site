@@ -119,3 +119,13 @@ venv.bak/
 
 # mkdocs documentation
 /site
+
+
+#aws
+.serverless/
+.serverlessrc
+.aws/
+.vscode/
+.idea/
+
+*.log

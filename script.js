@@ -175,13 +175,14 @@ function sendMessage() {
 
   const form = document.createElement("form");
   form.className = "form-style";
-  form.action = "https://formspree.io/f/mnqogjzv";
+  form.action =
+    "https://1qd65qu56g.execute-api.us-east-1.amazonaws.com/dev/save-message";
   form.method = "POST";
 
   // Create Name input
   const name = document.createElement("input");
   name.className = "input-style";
-  name.type = "url";
+  name.type = "text";
   name.name = "name";
   name.placeholder = "Name";
   name.required = true;
@@ -189,7 +190,7 @@ function sendMessage() {
   // Create Email input
   const email = document.createElement("input");
   email.className = "input-style";
-  email.type = "url";
+  email.type = "text";
   email.name = "email";
   email.placeholder = "Email";
   email.required = true;
