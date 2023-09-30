@@ -17,7 +17,7 @@
 
 > Terminal Portfolio
 
-### 🏠 [Homepage]([https://github.com/ejero/terminal-site#readme](http://rosita-terminal-website.s3-website-us-east-1.amazonaws.com/))
+### 🏠 [(http://rosita-terminal-website.s3-website-us-east-1.amazonaws.com/)](http://rosita-terminal-website.s3-website-us-east-1.amazonaws.com/))
 
 ## Install
 
