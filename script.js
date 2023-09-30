@@ -169,7 +169,8 @@ function displayHelpCommands() {
 }
 
 function sendMessage() {
-  formDisplayed = true;
+  formDisplayed = true; // Assuming this is a global variable or it's used elsewhere
+
   const sendMessageDiv = document.createElement("div");
   sendMessageDiv.className = "message-style";
 
@@ -177,7 +178,6 @@ function sendMessage() {
   form.className = "form-style";
   form.action =
     "https://1qd65qu56g.execute-api.us-east-1.amazonaws.com/dev/save-message";
-  form.method = "POST";
 
   // Create Name input
   const name = document.createElement("input");
@@ -220,13 +220,41 @@ function sendMessage() {
   sendMessageDiv.appendChild(form);
 
   // Append the container div to the commandsContainer
-  commandsContainer.appendChild(sendMessageDiv);
+  commandsContainer.appendChild(sendMessageDiv); // Assuming commandsContainer is a global variable or defined elsewhere
 
   // Trigger a repaint to ensure the initial opacity is applied before transitioning
   getComputedStyle(sendMessageDiv).getPropertyValue("opacity");
 
   // Change opacity to 1 to fade it in
   sendMessageDiv.style.opacity = "1";
+
+  // Add event listener for form submission
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const formData = {
+      name: name.value,
+      email: email.value,
+      message: message.value,
+    };
+
+    fetch(form.action, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        // Handle successful response, perhaps provide user feedback or redirect
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Handle error, perhaps show an error message to the user
+      });
+  });
 }
 
 function displayPortfolioCommand() {

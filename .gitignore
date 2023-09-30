@@ -129,3 +129,8 @@ venv.bak/
 .idea/
 
 *.log
+
+
+output.txt
+testPayload.json
+
