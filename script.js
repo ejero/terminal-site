@@ -76,6 +76,18 @@ const commandsContainer = document.getElementById("commandsContainer");
 // Help to focus and unfocus cursor
 let formDisplayed = false;
 
+// Scrollable content
+document.addEventListener("DOMContentLoaded", function () {
+  const parent = document.querySelector(".parent");
+  const div4 = document.querySelector(".div4");
+
+  const scrollableContent = document.createElement("div");
+  scrollableContent.className = "scrollable-content";
+
+  parent.appendChild(scrollableContent); // Append scrollableContent to parent
+  scrollableContent.appendChild(div4); // Move div4 into scrollableContent
+});
+
 // Type writer effect to text
 function typeText(element, text, delay, callback) {
   let i = 0;
@@ -144,8 +156,8 @@ function displayHelpCommands() {
       lineDiv.appendChild(descSpan);
       commandDiv.appendChild(lineDiv);
 
-      typeText(cmdSpan, helpCommands[index].cmd, 15, () => {
-        typeText(descSpan, helpCommands[index].desc, 15, () => {
+      typeText(cmdSpan, helpCommands[index].cmd, 8, () => {
+        typeText(descSpan, helpCommands[index].desc, 8, () => {
           displayCommand(index + 1);
         });
       });
@@ -287,9 +299,9 @@ function displayAboutMe() {
       paraElement.className = "about-section";
 
       // Using my typeText function to type out the content of this paragraph
-      typeText(paraElement, paragraphs[index].trim(), 1, () => {
+      typeText(paraElement, paragraphs[index].trim(), 0.5, () => {
         // Add a spacer after every paragraph except the last one
-        if (index < paragraphs.length - 1) {
+        if (index < paragraphs.length - 0.5) {
           const spacer = document.createElement("div");
           spacer.style.height = "5px"; // Adjust the height as required
           aboutMeDiv.appendChild(spacer);

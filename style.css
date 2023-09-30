@@ -1,23 +1,52 @@
 body {
   font-family: sans-serif;
   margin: 0;
-  display: flex; /* Enable Flexbox */
-  justify-content: center; /* Center horizontally */
-  align-items: flex-start; /* Align to the top vertically */
-  width: 100%; /* Making sure the body takes the full viewport width */
+  height: 100vh;
+  width: 100vw;
+}
+
+#app {
+  display: flex;
+  justify-content: center; /* Horizontally center the .parent */
+  align-items: center; /* Vertically center the .parent */
+  width: 100%;
+  height: 100%;
   background: linear-gradient(0deg, #264c6e 0%, #030c21 100%);
-  margin-top: 20px;
-  background-size: 100% 100vh; /* This will make the gradient always span the full height of the viewport */
 }
 
 .parent {
+  margin-top: -60px;
   display: grid;
   grid-template-columns: 0.01fr 0.2fr 1fr 0.01fr;
   grid-template-rows: 0.01fr 0.1fr 1fr 0.01fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   min-width: 80vw;
+  max-height: 90vh;
+  /* overflow-y: auto; */
   border-radius: 12px;
+}
+
+.scrollable-content {
+  overflow-y: auto;
+  grid-area: 3 / 2 / 4 / 4; /* Inherit the grid area properties of div4 */
+
+  /* Force scroll bar to show when there is content to scroll */
+  overflow-y: auto;
+}
+
+.scrollable-content::-webkit-scrollbar {
+  width: 12px; /* Adjust width as needed */
+}
+
+.scrollable-content::-webkit-scrollbar-thumb {
+  background-color: #9e0a9b; /* Color of the scroll thumb */
+  border-radius: 6px;
+}
+
+.scrollable-content::-webkit-scrollbar-track {
+  background-color: transparent; /* Color of the scroll track */
+  border-radius: 6px;
 }
 
 .div1 {
@@ -38,6 +67,7 @@ body {
 .div4 {
   grid-area: 3 / 2 / 4 / 4;
   color: #fff;
+  margin: 20px;
 }
 
 .dot {
@@ -78,7 +108,6 @@ body {
   border: none;
   outline: none;
   width: 240px;
-  /* font-family: "Courier New", Courier, monospace; */
   margin-left: 10px;
   color: #fff;
 }
@@ -90,7 +119,6 @@ body {
 .prompt,
 .enteredCommand {
   color: white;
-  /* font-family: "Courier New", Courier, monospace; */
 }
 
 .prompt {
@@ -137,7 +165,7 @@ body {
 
 .help-contact-div a {
   color: rgb(16, 239, 236);
-  text-decoration: none; /* optional, if you want to remove the underline */
+  text-decoration: none;
   /* font-family: "DM Sans", sans-serif;
   font-family: "Lexend Deca", sans-serif;
   font-family: "Moirai One", cursive; */
@@ -163,6 +191,10 @@ body {
   font-size: 15px;
 }
 
+.helpWelcome {
+  margin-bottom: 20px;
+}
+
 /* About me Styling */
 .about-section {
   color: #fff;
@@ -174,8 +206,6 @@ body {
 /* Contact styles */
 .howDesc {
   display: inline-block;
-  /* font-size: 16px; */
-  /* font-weight: bold; */
   margin-right: 10px;
 }
 
@@ -184,7 +214,6 @@ body {
   font-weight: 800;
 }
 
-/* Contact styles */
 .link {
   color: #fff;
 }
@@ -206,11 +235,11 @@ body {
 .divs2,
 .divs3,
 .divs4 {
-  margin-bottom: 20px; /* Adjust this value to your liking */
+  margin-bottom: 20px;
 }
 
 .projectDiv {
-  margin-bottom: 20px; /* Adjust this value to your liking */
+  margin-bottom: 20px;
 }
 
 .projectTitle {
@@ -248,7 +277,6 @@ body {
 }
 
 /* Styling for the contact form */
-
 .message-style {
   width: 100%;
   max-width: 300px;
