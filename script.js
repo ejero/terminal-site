@@ -1,19 +1,19 @@
 /* List avaiable commands when user enters 'help' */
 
 const helpCommands = [
-  { cmd: "help", desc: "- find out the commands you can run" },
-  { cmd: "about", desc: "- learn all about me" },
-  { cmd: "portfolio", desc: "- see the list of projects I have made" },
+  { cmd: "help", desc: "find out the commands you can run" },
+  { cmd: "about", desc: "learn all about me" },
+  { cmd: "portfolio", desc: "see the list of projects I have made" },
   {
     cmd: "contact",
-    desc: "- see ways you can reach me...(no stalkers please)",
+    desc: "see ways you can reach me...(no stalkers please)",
   },
   {
     cmd: "message",
-    desc: "- Send me a message. I'd love to hear from you!",
+    desc: "Send me a message. I'd love to hear from you!",
   },
 
-  { cmd: "clear", desc: "- clear the screen" },
+  { cmd: "clear", desc: "clear the screen" },
 ];
 
 const aboutMe = `
@@ -54,7 +54,6 @@ const portfolio = [
   },
 ];
 
-
 const contact = [
   { how: "GitHub ", link: "https://github.com/ejero" },
   { how: "LinkedIn ", link: "https://www.linkedin.com/in/rosita-emakpo/" },
@@ -67,19 +66,14 @@ let commandHistory = [];
 let currentHistoryIndex = -1;
 
 // For input field to be focused on page load
-let inputBox = document.getElementById("input");
+// let inputBox = document.getElementById("input");
+let inputBox;
 
 // Prompt container that displays all prompt and respones
 const commandsContainer = document.getElementById("commandsContainer");
 
-//Inital focus on input field
-//document.getElementById('input').focus();
-inputBox.focus();
-
-//Re-foccus on inout field whenever it loses focus
-inputBox.addEventListener("blur", () => {
-  inputBox.focus();
-});
+// Help to focus and unfocus cursor
+let formDisplayed = false;
 
 // Type writter effect to text
 function typeText(element, text, delay, callback) {
@@ -102,18 +96,17 @@ function typeText(element, text, delay, callback) {
 function displayContactCommands() {
   // Create a html <span> & <div> elements
   const contactDiv = document.createElement("div");
-
+  contactDiv.className = "help-contact-div";
   function displayContact(index) {
     if (index < contact.length) {
       const howSpan = document.createElement("span");
       howSpan.className = "how";
-      howSpan.className = "howDesc"
+      howSpan.className = "howDesc";
 
       const linkSpan = document.createElement("span");
       linkSpan.className = "link";
       linkSpan.innerHTML = `<a href="${contact[index].link}" target="_blank">${contact[index].link}</a>`;
-      linkSpan.className = "linkDesc"
-
+      linkSpan.className = "linkDesc";
 
       // githubLinkSpan.innerHTML = `<a href="${project.githubLink}" target="_blank">GitHub Link</a>`;
 
@@ -138,7 +131,7 @@ function displayContactCommands() {
 function displayHelpCommands() {
   // Create a html <span> & <div> elements
   const commandDiv = document.createElement("div");
-
+  commandDiv.className = "help-command-div";
   function displayCommand(index) {
     if (index < helpCommands.length) {
       const cmdSpan = document.createElement("span");
@@ -160,13 +153,12 @@ function displayHelpCommands() {
     }
   }
 
-
   commandsContainer.appendChild(commandDiv);
   displayCommand(0);
 }
 
-
 function sendMessage() {
+  formDisplayed = true;
   const sendMessageDiv = document.createElement("div");
   sendMessageDiv.className = "message-style";
 
@@ -219,11 +211,6 @@ function sendMessage() {
   commandsContainer.appendChild(sendMessageDiv);
 }
 
-
-
-
-
-
 function displayPortfolioCommand() {
   // Get the commandsContainer to which you will append the portfolio content.
   const commandsContainer = document.getElementById("commandsContainer");
@@ -234,22 +221,22 @@ function displayPortfolioCommand() {
 
   function displayPortfolio() {
     const gridParentDiv = document.createElement("div");
-    gridParentDiv.className = "parent";
+    gridParentDiv.className = "parents";
 
     portfolio.forEach((project, index) => {
       const projectDiv = document.createElement("div");
       switch (index) {
         case 0:
-          projectDiv.className = "div1";
+          projectDiv.className = "divs1";
           break;
         case 1:
-          projectDiv.className = "div2";
+          projectDiv.className = "divs2";
           break;
         case 2:
-          projectDiv.className = "div3";
+          projectDiv.className = "divs3";
           break;
         case 3:
-          projectDiv.className = "div4";
+          projectDiv.className = "divs4";
           break;
         default:
           // If there are more projects than expected
@@ -346,7 +333,15 @@ function createNewInputLine() {
 
   const newPromptSpan = document.createElement("span");
   newPromptSpan.className = "prompt";
-  newPromptSpan.textContent = "rosita@rosita.tech ~  $";
+  // newPromptSpan.textContent = "rosita@rosita.tech ~  $";
+
+  const nameSpan = document.createElement("span");
+  nameSpan.className = "name-style";
+  nameSpan.textContent = "rosita";
+
+  const domainSpan = document.createElement("span");
+  domainSpan.className = "domain-style";
+  domainSpan.textContent = "@rosita.tech";
 
   const newInput = document.createElement("input");
   // Adding input type as URL to disable 1password plugin
@@ -359,6 +354,10 @@ function createNewInputLine() {
   newInput.maxlength = "18";
   newInput.size = "10";
   newInput.setAttribute("class", "inputSyle");
+
+  newPromptSpan.appendChild(nameSpan);
+  newPromptSpan.appendChild(domainSpan);
+  newPromptSpan.appendChild(document.createTextNode(" ~  $"));
 
   newPromptDiv.appendChild(newPromptSpan);
   newPromptDiv.appendChild(newInput);
@@ -373,7 +372,9 @@ function createNewInputLine() {
 
   // Add the blur and keydown events to the new input
   inputBox.addEventListener("blur", () => {
-    inputBox.focus();
+    if (!formDisplayed) {
+      inputBox.focus();
+    }
   });
 
   // List of commands to run based on user prompt
@@ -418,6 +419,13 @@ function createNewInputLine() {
 
       // Remove the input box now that the command has been processed
       inputBox.remove();
+
+      // Refocus the cursor is not on message command
+      if (inputValue === "message") {
+        formDisplayed = true;
+      } else {
+        formDisplayed = false;
+      }
 
       // Check if the entered command exists in our commandAction object
       if (commandAction[inputValue]) {

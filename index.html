@@ -1,24 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="reset.css" />
-  <link rel="stylesheet" href="style.css" />
-  <title>Document</title>
-</head>
-
-<body>
-  <p class="tab">Portfolio</p>
-  <p>rosita@rosita.tech portfolio: ~</p>
-  <p>Type <span id="helpCommand">help</span> to get a list of commands</p>
-
-  <div id="commandsContainer">
-    <input type="text" id="input" class="thick-caret-input" name="name" required minlength="4" maxlength="18" size="10"
-      data-1p-ignore />
-  </div>
-  <script src="script.js"></script>
-</body>
-
+<html>
+  <head>
+    <title>Hello</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <div class="parent">
+      <div class="div1"></div>
+      <div class="div2">
+        <div class="dot"></div>
+        <div class="dot2"></div>
+        <div class="dot3"></div>
+      </div>
+      <div class="div3"><p class="welcomeBanner">guest@rosita ~</p></div>
+      <div class="div4">
+        <p class="helpWelcome">
+          Type <span id="helpCommand">'help'</span> to get a list of commands
+        </p>
+        <div id="commandsContainer"></div>
+      </div>
+    </div>
+    <script src="./script.js" type="module"></script>
+  </body>
 </html>

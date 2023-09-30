@@ -1,27 +1,96 @@
 body {
-  background-color: #ffffff;
-  margin: 20px;
+  font-family: sans-serif;
+  margin: 0;
+  display: flex; /* Enable Flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: flex-start; /* Align to the top vertically */
+  width: 100%; /* Making sure the body takes the full viewport width */
+  background: linear-gradient(0deg, #264c6e 0%, #030c21 100%);
+  margin-top: 20px;
+  background-size: 100% 100vh; /* This will make the gradient always span the full height of the viewport */
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: 0.01fr 0.2fr 1fr 0.01fr;
+  grid-template-rows: 0.01fr 0.1fr 1fr 0.01fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  min-width: 80vw;
+  border-radius: 12px;
+}
+
+.div1 {
+  grid-area: 1 / 1 / 5 / 5;
+  background: linear-gradient(0deg, #3a7bb4 0%, #022d8b 100%);
+  min-height: 40vh;
+  border-radius: 10px;
+  box-shadow: 0px 4px 35px rgb(68, 129, 142);
+}
+
+.div2 {
+  grid-area: 2 / 2 / 3 / 3;
+}
+.div3 {
+  grid-area: 2 / 3 / 3 / 4;
+  margin-left: -150px;
+}
+.div4 {
+  grid-area: 3 / 2 / 4 / 4;
+  color: #fff;
+}
+
+.dot {
+  width: 10px; /* Set the width of the circle */
+  height: 10px; /* Set the height of the circle */
+  background-color: rgb(252, 96, 91);
+  border-radius: 50%; /* Makes it a circle */
+  display: inline-block; /* Makes it inline so you can put it next to other elements */
+  border: solid 1px rgb(238, 85, 82);
+}
+
+.dot2 {
+  width: 10px; /* Set the width of the circle */
+  height: 10px; /* Set the height of the circle */
+  background-color: rgb(252, 187, 64);
+  border-radius: 50%; /* Makes it a circle */
+  display: inline-block;
+  border: solid 1px rgb(238, 175, 59);
+}
+
+.dot3 {
+  width: 10px; /* Set the width of the circle */
+  height: 10px; /* Set the height of the circle */
+  background-color: rgb(52, 200, 73);
+  border-radius: 50%; /* Makes it a circle */
+  display: inline-block;
+  border: solid 1px rgb(44, 183, 62);
+}
+
+.welcomeBanner {
+  color: rgb(253, 253, 253);
+  margin: 0;
+  text-align: center;
+}
+
+#input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 240px;
+  /* font-family: "Courier New", Courier, monospace; */
+  margin-left: 10px;
+  color: #fff;
 }
 
 #ascii-art {
   font-family: "Courier New", Courier, monospace;
 }
 
-#input {
-  border: none;
-  outline: none;
-  width: 240px;
-  color: blue;
-  font-size: 22px;
-  font-family: "Courier New", Courier, monospace;
-  margin-left: 10px;
-}
-
 .prompt,
 .enteredCommand {
-  color: blue;
-  font-size: 22px;
-  font-family: "Courier New", Courier, monospace;
+  color: white;
+  /* font-family: "Courier New", Courier, monospace; */
 }
 
 .prompt {
@@ -37,6 +106,13 @@ body {
 .cmd {
   display: inline-block;
   width: 100px; /* Size based on longest command */
+  /* text-shadow: 2px 2px 15px rgba(42, 246, 255, 0.91); */
+  color: #b6eab6;
+  /* Green Glow */
+  /* text-shadow: 0 0 22px #00ff00, 0 0 8px #00ff00, 0 0 10px #00ff00; */
+  /* Pink glow */
+  color: #fff;
+  text-shadow: 0 0 15px #ff69b4, 0 0 10px #ff69b4, 0 0 15px #ff69b4;
 }
 
 .desc {
@@ -44,73 +120,55 @@ body {
   display: inline-block;
 }
 
-/* To add padding between commands */
-div > div {
-  padding: 10px 0;
+.help-command-div > div {
+  padding: 7px 0; /* Add padding between commands */
+}
+
+.help-contact-div > div {
+  padding: 7px 0; /* Add padding between commands */
+}
+
+/* Standard fonts */
+#input,
+.prompt,
+.enteredCommand,
+.cmd,
+.desc,
+.helpWelcome,
+.about-section,
+.how,
+.howDesc,
+.link,
+.linkDesc {
+  font-size: 15px;
 }
 
 /* About me Styling */
 .about-section {
-  color: rgb(65, 67, 65);
-  width: 80vw;
-  font-size: 20px;
-}
-
-/* Portfolio card layout */
-
-.parent {
-  display: grid;
-  grid-template-columns: repeat(1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  gap: 15px;
-  grid-auto-flow: row;
-  max-width: 20%;
-}
-
-.div1 {
-  grid-area: 1 / 1 / 2 / 2;
-  background-color: rgb(255, 255, 255);
-}
-.div2 {
-  grid-area: 1 / 2 / 2 / 3;
-}
-.div3 {
-  grid-area: 2 / 1 / 3 / 2;
-}
-.div4 {
-  grid-area: 2 / 2 / 3 / 3;
-}
-
-.div1,
-.div2,
-.div3,
-.div4 {
-  border-radius: 10px;
-  padding: 20px;
-  border: solid 1px rgba(129, 224, 245, 0.507);
-  box-shadow: 0px 1px 4px rgb(77, 77, 77);
-  width: 200px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: inset 0 0 14px #c7ebf0;
-  color: rgb(92, 88, 88);
-}
-
-.projectTitle {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 12px;
-  border-bottom: 1px solid;
-  text-align: center;
-}
-
-.githubLink {
-  display: inline-block;
-  border-radius: 5px;
-  background-color: rgb(149, 149, 182);
-  padding: 12px;
-  margin-top: 20px;
   color: #fff;
-  text-decoration: none;
+  width: 80vw;
+  margin: 9px;
+}
+/* Contact styles */
+.howDesc {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.name-style {
+  color: rgb(239, 163, 229);
+  font-weight: 800;
+}
+
+#helpCommand {
+  color: #2ced2c;
+  text-shadow: -3px -2px 12px #38ce66;
+  /* Green glowing text */
+  /* text-shadow: 2px 2px 12px #1ece84; */
+  font-size: 16px;
+
+  /* Pink glowing text */
+  color: #fff;
+  text-shadow: 0 0 15px #ff69b4, 0 0 10px #ff69b4, 0 0 15px #ff69b4;
 }
