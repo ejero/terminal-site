@@ -228,14 +228,14 @@ body {
 
 #helpCommand {
   color: #2ced2c;
-  text-shadow: -3px -2px 12px #38ce66;
+  text-shadow: -3px -2px 10px #38ce66;
   /* Green glowing text */
   /* text-shadow: 2px 2px 12px #1ece84; */
   font-size: 16px;
 
   /* Pink glowing text */
-  color: #fff;
-  text-shadow: 0 0 15px #ff69b4, 0 0 10px #ff69b4, 0 0 15px #ff69b4;
+  /* color: #fff;
+  text-shadow: 0 0 15px #ff69b4, 0 0 10px #ff69b4, 0 0 15px #ff69b4; */
 }
 
 /* Portfolio styling */
