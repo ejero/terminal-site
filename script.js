@@ -444,4 +444,8 @@ function createNewInputLine() {
     }
   });
 }
-createNewInputLine();
+
+// Forces the inout to
+document.addEventListener("DOMContentLoaded", function () {
+  createNewInputLine();
+});
