@@ -17,7 +17,7 @@
 
 > Terminal Portfolio
 
-### 🏠 [(http://rosita-terminal-website.s3-website-us-east-1.amazonaws.com/)](http://rosita-terminal-website.s3-website-us-east-1.amazonaws.com/))
+### 🏠 [Home Page](http://rosita-terminal-website.s3-website-us-east-1.amazonaws.com/))
 
 ## Install
 
