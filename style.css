@@ -118,6 +118,7 @@ body {
 .desc {
   margin-left: 10px;
   display: inline-block;
+  font-family: "DM Sans", sans-serif;
 }
 
 .help-command-div > div {
@@ -126,6 +127,26 @@ body {
 
 .help-contact-div > div {
   padding: 7px 0; /* Add padding between commands */
+  display: flex; /* Set the container to flex */
+  justify-content: flex-start;
+}
+
+.howDesc {
+  width: 150px;
+}
+
+.help-contact-div a {
+  color: rgb(16, 239, 236);
+  text-decoration: none; /* optional, if you want to remove the underline */
+  /* font-family: "DM Sans", sans-serif;
+  font-family: "Lexend Deca", sans-serif;
+  font-family: "Moirai One", cursive; */
+
+  font-family: "DM Sans", sans-serif;
+}
+
+.help-contact-div a:hover {
+  color: #fba3cf;
 }
 
 /* Standard fonts */
@@ -135,7 +156,6 @@ body {
 .cmd,
 .desc,
 .helpWelcome,
-.about-section,
 .how,
 .howDesc,
 .link,
@@ -148,17 +168,25 @@ body {
   color: #fff;
   width: 80vw;
   margin: 9px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 200;
 }
 /* Contact styles */
 .howDesc {
-  display: block;
-  font-size: 16px;
-  font-weight: bold;
+  display: inline-block;
+  /* font-size: 16px; */
+  /* font-weight: bold; */
+  margin-right: 10px;
 }
 
 .name-style {
   color: rgb(239, 163, 229);
   font-weight: 800;
+}
+
+/* Contact styles */
+.link {
+  color: #fff;
 }
 
 #helpCommand {
@@ -171,4 +199,104 @@ body {
   /* Pink glowing text */
   color: #fff;
   text-shadow: 0 0 15px #ff69b4, 0 0 10px #ff69b4, 0 0 15px #ff69b4;
+}
+
+/* Portfolio styling */
+.divs1,
+.divs2,
+.divs3,
+.divs4 {
+  margin-bottom: 20px; /* Adjust this value to your liking */
+}
+
+.projectDiv {
+  margin-bottom: 20px; /* Adjust this value to your liking */
+}
+
+.projectTitle {
+  font-family: "DM Sans", sans-serif;
+  font-size: 17px;
+  letter-spacing: 0.2rem;
+  display: inline-block;
+  margin-bottom: 3px;
+}
+
+.parents .divs1 .projectTitle {
+  margin-top: 15px;
+}
+
+.githubLink {
+  color: #fff;
+  text-decoration: none;
+  margin-top: 9px;
+  display: block;
+  text-decoration: underline;
+  text-shadow: 0 0 15px #ff69b4, 0 0 10px #ff69b4, 0 0 15px #ff69b4;
+}
+
+.githubLink:hover {
+  color: rgb(226, 158, 231);
+}
+
+.projectDesc {
+  letter-spacing: 2px;
+  font-size: 15px;
+}
+
+.technologiesUsed {
+  letter-spacing: 0.1rem;
+}
+
+/* Styling for the contact form */
+
+.message-style {
+  width: 100%;
+  max-width: 300px;
+  /* margin: 2em auto; */
+}
+
+.form-style {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em; /* This creates space between form elements */
+  outline: none;
+  margin-top: 10px;
+}
+
+.input-style {
+  padding: 0.5em;
+  border: none;
+  border-bottom: 2px solid #fff;
+  background-color: transparent;
+  transition: border-bottom-color 0.3s;
+  outline: none;
+  font-size: 18px;
+  color: #ff69b4;
+}
+
+.input-style::placeholder {
+  color: #888;
+  font-style: italic;
+  opacity: 1;
+  font-size: 18px;
+}
+
+.input-style:focus {
+  border-bottom-color: #ff69b4;
+}
+
+.button-style {
+  padding: 0.5em 1em;
+  border: none;
+  background-color: #ff69b4;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 30px;
+  margin-bottom: 22px;
+}
+
+.button-style:hover {
+  background-color: #d5e0ec;
+  color: #ff69b4;
 }

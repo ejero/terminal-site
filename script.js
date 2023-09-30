@@ -36,20 +36,21 @@ const portfolio = [
   {
     projectTitle: "Salon Project ",
     desc: "A hair salon application example for all curl types",
-    technologiesUsed: "JavaScript, React, PocketBase, Chatwoot ",
+    technologiesUsed:
+      "Technologies used: JavaScript, React, PocketBase, Chatwoot ",
     githubLink: " https://github.com/ejero/salon-project ",
   },
   {
     projectTitle: "Jebin Backend ",
     desc: "A backend applicationt to manager users and accounts hosted on a Linode server",
     technologiesUsed:
-      "JavaScrit, Express, Squelize, SQLite3, Jest, GitHub Actions",
+      "Technologies used: JavaScrit, Express, Squelize, SQLite3, Jest, GitHub Actions",
     githubLink: " https://github.com/ejero/Jebin-Backend/tree/main ",
   },
   {
     projectTitle: "Books Seach ",
     desc: "BooksSeach is a Python project that uses Google Books API",
-    technologiesUsed: "Google Client API, Python, API key ",
+    technologiesUsed: "Technologies used: Google Client API, Python, API key ",
     githubLink: " https://github.com/ejero/Book-Seach_Google_Books-API",
   },
 ];
@@ -75,7 +76,7 @@ const commandsContainer = document.getElementById("commandsContainer");
 // Help to focus and unfocus cursor
 let formDisplayed = false;
 
-// Type writter effect to text
+// Type writer effect to text
 function typeText(element, text, delay, callback) {
   let i = 0;
 
@@ -94,21 +95,17 @@ function typeText(element, text, delay, callback) {
 
 // Function to diplsay the contact commands
 function displayContactCommands() {
-  // Create a html <span> & <div> elements
+  // Create a html <div> element
   const contactDiv = document.createElement("div");
   contactDiv.className = "help-contact-div";
+
   function displayContact(index) {
     if (index < contact.length) {
       const howSpan = document.createElement("span");
-      howSpan.className = "how";
-      howSpan.className = "howDesc";
+      howSpan.className = "how howDesc";
 
       const linkSpan = document.createElement("span");
-      linkSpan.className = "link";
-      linkSpan.innerHTML = `<a href="${contact[index].link}" target="_blank">${contact[index].link}</a>`;
-      linkSpan.className = "linkDesc";
-
-      // githubLinkSpan.innerHTML = `<a href="${project.githubLink}" target="_blank">GitHub Link</a>`;
+      linkSpan.className = "link linkDesc";
 
       const lineDiv = document.createElement("div");
       lineDiv.appendChild(howSpan);
@@ -117,6 +114,8 @@ function displayContactCommands() {
 
       typeText(howSpan, contact[index].how, 15, () => {
         typeText(linkSpan, contact[index].link, 15, () => {
+          // Set the link only after typing is complete
+          linkSpan.innerHTML = `<a href="${contact[index].link}" target="_blank">${linkSpan.textContent}</a>`;
           displayContact(index + 1);
         });
       });
@@ -170,7 +169,7 @@ function sendMessage() {
   // Create Name input
   const name = document.createElement("input");
   name.className = "input-style";
-  name.type = "text";
+  name.type = "url";
   name.name = "name";
   name.placeholder = "Name";
   name.required = true;
@@ -178,7 +177,7 @@ function sendMessage() {
   // Create Email input
   const email = document.createElement("input");
   email.className = "input-style";
-  email.type = "text";
+  email.type = "url";
   email.name = "email";
   email.placeholder = "Email";
   email.required = true;
@@ -212,76 +211,64 @@ function sendMessage() {
 }
 
 function displayPortfolioCommand() {
-  // Get the commandsContainer to which you will append the portfolio content.
   const commandsContainer = document.getElementById("commandsContainer");
 
   // Create the main container for the portfolio
   const portfolioDiv = document.createElement("div");
   portfolioDiv.className = "portfolio-style";
 
-  function displayPortfolio() {
-    const gridParentDiv = document.createElement("div");
-    gridParentDiv.className = "parents";
+  const gridParentDiv = document.createElement("div");
+  gridParentDiv.className = "parents";
 
-    portfolio.forEach((project, index) => {
-      const projectDiv = document.createElement("div");
-      switch (index) {
-        case 0:
-          projectDiv.className = "divs1";
-          break;
-        case 1:
-          projectDiv.className = "divs2";
-          break;
-        case 2:
-          projectDiv.className = "divs3";
-          break;
-        case 3:
-          projectDiv.className = "divs4";
-          break;
-        default:
-          // If there are more projects than expected
-          console.error("More projects than expected");
-          return;
-      }
+  let currentProjectIndex = 0; // Add this to keep track of the current project being displayed
 
-      const title = document.createElement("span");
-      title.className = "projectTitle";
-      title.textContent = ` ${project.projectTitle}`;
+  function displayOneProject() {
+    if (currentProjectIndex >= portfolio.length) {
+      return; // Stop if all projects have been displayed
+    }
 
-      const desc = document.createElement("span");
-      desc.className = "projectDesc";
-      desc.textContent = `${project.desc}`;
+    const project = portfolio[currentProjectIndex];
+    const projectDiv = document.createElement("div");
+    projectDiv.className = `projectDiv divs${currentProjectIndex + 1}`;
 
-      const tech = document.createElement("span");
-      tech.className = "technologiesUsed";
-      tech.textContent = ` ${project.technologiesUsed}`;
+    const title = document.createElement("span");
+    title.className = "projectTitle";
 
-      const link = document.createElement("a");
-      link.className = "githubLink";
-      link.href = project.githubLink;
-      link.target = "_blank";
-      link.textContent = "Github link";
+    const desc = document.createElement("span");
+    desc.className = "projectDesc";
 
-      // Append elements to the projectDiv
-      projectDiv.appendChild(title);
-      projectDiv.appendChild(document.createElement("br"));
-      projectDiv.appendChild(desc);
-      projectDiv.appendChild(document.createElement("br"));
-      projectDiv.appendChild(tech);
-      projectDiv.appendChild(document.createElement("br"));
-      projectDiv.appendChild(link);
+    const tech = document.createElement("span");
+    tech.className = "technologiesUsed";
 
-      // Append projectDiv to the parent grid
-      gridParentDiv.appendChild(projectDiv);
+    const link = document.createElement("a");
+    link.className = "githubLink";
+    link.href = project.githubLink;
+    link.target = "_blank";
+
+    projectDiv.appendChild(title);
+    projectDiv.appendChild(document.createElement("br"));
+    projectDiv.appendChild(desc);
+    projectDiv.appendChild(document.createElement("br"));
+    projectDiv.appendChild(tech);
+    projectDiv.appendChild(document.createElement("br"));
+    projectDiv.appendChild(link);
+
+    gridParentDiv.appendChild(projectDiv);
+
+    typeText(title, ` ${project.projectTitle}`, 10, () => {
+      typeText(desc, `${project.desc}`, 10, () => {
+        typeText(tech, ` ${project.technologiesUsed}`, 10, () => {
+          link.textContent = "Github link"; // Directly set text for the link
+          currentProjectIndex++; // Move to the next project
+          displayOneProject(); // Recursive call
+        });
+      });
     });
-
-    // Append the parent grid to the portfolioDiv
-    portfolioDiv.appendChild(gridParentDiv);
   }
 
-  displayPortfolio();
+  displayOneProject(); // Start the process
 
-  // Appending the portfolioDiv to the commandsContainer.
+  portfolioDiv.appendChild(gridParentDiv);
   commandsContainer.appendChild(portfolioDiv);
 }
 
