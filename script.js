@@ -220,6 +220,12 @@ function sendMessage() {
 
   // Append the container div to the commandsContainer
   commandsContainer.appendChild(sendMessageDiv);
+
+  // Trigger a repaint to ensure the initial opacity is applied before transitioning
+  getComputedStyle(sendMessageDiv).getPropertyValue("opacity");
+
+  // Change opacity to 1 to fade it in
+  sendMessageDiv.style.opacity = "1";
 }
 
 function displayPortfolioCommand() {

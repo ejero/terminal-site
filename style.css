@@ -15,7 +15,7 @@ body {
 }
 
 .parent {
-  margin-top: -60px;
+  margin-top: -40px;
   display: grid;
   grid-template-columns: 0.01fr 0.2fr 1fr 0.01fr;
   grid-template-rows: 0.01fr 0.1fr 1fr 0.01fr;
@@ -280,7 +280,8 @@ body {
 .message-style {
   width: 100%;
   max-width: 300px;
-  /* margin: 2em auto; */
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .form-style {
