@@ -337,3 +337,12 @@ body {
   background-color: #d5e0ec;
   color: #ff69b4;
 }
+
+/* Form Submission fonfirmation */
+.submittedForm {
+  color: rgb(53, 191, 53);
+  font-size: 16px;
+  font-style: italic;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}

@@ -254,6 +254,9 @@ function sendMessage() {
         console.error("Error:", error);
         // Handle error, perhaps show an error message to the user
       });
+
+    sendMessageDiv.textContent = "Contact form submitted, yay!";
+    sendMessageDiv.className = "submittedForm";
   });
 }
 
