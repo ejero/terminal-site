@@ -211,7 +211,15 @@ body {
 
 .name-style {
   color: rgb(239, 163, 229);
-  font-weight: 800;
+  font-weight: 400;
+}
+.domain-style {
+  padding-right: 7px;
+}
+
+.tilde-span {
+  padding-right: 2px;
+  color: #38ce66;
 }
 
 .link {

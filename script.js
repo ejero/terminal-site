@@ -338,7 +338,6 @@ function createNewInputLine() {
 
   const newPromptSpan = document.createElement("span");
   newPromptSpan.className = "prompt";
-  // newPromptSpan.textContent = "rosita@rosita.tech ~  $";
 
   const nameSpan = document.createElement("span");
   nameSpan.className = "name-style";
@@ -347,6 +346,10 @@ function createNewInputLine() {
   const domainSpan = document.createElement("span");
   domainSpan.className = "domain-style";
   domainSpan.textContent = "@rosita.tech";
+
+  const tildeSpan = document.createElement("span");
+  tildeSpan.className = "tilde-span";
+  tildeSpan.textContent = " ~";
 
   const newInput = document.createElement("input");
   // Adding input type as URL to disable 1password plugin
@@ -362,7 +365,8 @@ function createNewInputLine() {
 
   newPromptSpan.appendChild(nameSpan);
   newPromptSpan.appendChild(domainSpan);
-  newPromptSpan.appendChild(document.createTextNode(" ~  $"));
+  newPromptSpan.appendChild(tildeSpan);
+  newPromptSpan.appendChild(document.createTextNode("  $"));
 
   newPromptDiv.appendChild(newPromptSpan);
   newPromptDiv.appendChild(newInput);
