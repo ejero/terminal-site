@@ -23,6 +23,14 @@ frameworkVersion: "3"
 provider:
   name: aws
   runtime: nodejs18.x
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - dynamodb:PutItem
+          Resource:
+            - "arn:aws:dynamodb:us-east-1:353599428612:table/Messages"
 
 # you can overwrite defaults here
 #  stage: dev
