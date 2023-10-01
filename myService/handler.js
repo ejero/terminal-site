@@ -1,5 +1,6 @@
 const AWS = require("aws-sdk");
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
+const sns = new AWS.SNS();
 
 module.exports.saveMessage = async (event) => {
   // Handle OPTIONS pre-flight
@@ -29,7 +30,22 @@ module.exports.saveMessage = async (event) => {
   };
 
   try {
+    // Save the message to DynamoDB
     await dynamoDB.put(params).promise();
+
+    // Publish a message to an SNS topic
+    const snsParams = {
+      Message: JSON.stringify({
+        name: requestBody.name,
+        email: requestBody.email,
+        message: requestBody.message,
+      }),
+      Subject: "New Message Received", // Set a subject for your notification
+      TopicArn: "arn:aws:sns:us-east-1:353599428612:FormSubmissions",
+    };
+
+    await sns.publish(snsParams).promise();
+
     return {
       statusCode: 200,
       headers: {
