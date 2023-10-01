@@ -97,6 +97,10 @@ body {
   border: solid 1px rgb(44, 183, 62);
 }
 
+.guest {
+  color: #f295e4;
+}
+
 .welcomeBanner {
   color: rgb(253, 253, 253);
   margin: 0;
@@ -210,7 +214,7 @@ body {
 }
 
 .name-style {
-  color: rgb(242, 149, 228);
+  color: #f295e4;
   font-weight: 400;
 }
 .domain-style {
@@ -238,7 +242,7 @@ body {
   text-shadow: 0 0 15px #ff69b4, 0 0 10px #ff69b4, 0 0 15px #ff69b4; */
 }
 
-/* Portfolio styling */
+/* projects styling */
 .divs1,
 .divs2,
 .divs3,

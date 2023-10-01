@@ -3,7 +3,7 @@
 const helpCommands = [
   { cmd: "help", desc: "find out the commands you can run" },
   { cmd: "about", desc: "learn all about me" },
-  { cmd: "portfolio", desc: "see the list of projects I have made" },
+  { cmd: "projects", desc: "see the list of projects I have made" },
   {
     cmd: "contact",
     desc: "see ways you can reach me...(no stalkers please)",
@@ -26,7 +26,7 @@ When I'm not immersed in code, you'll find me whipping up dishes from all corner
 Thank you for stopping by! Fancy a chat? I'm all ears! Let's connect.
 `;
 
-const portfolio = [
+const projects = [
   {
     projectTitle: "String to Cut",
     desc: "Small web app that accepts a POST request and returns a JSON object",
@@ -260,12 +260,12 @@ function sendMessage() {
   });
 }
 
-function displayPortfolioCommand() {
+function displayprojectsCommand() {
   const commandsContainer = document.getElementById("commandsContainer");
 
-  // Create the main container for the portfolio
-  const portfolioDiv = document.createElement("div");
-  portfolioDiv.className = "portfolio-style";
+  // Create the main container for the projects
+  const projectsDiv = document.createElement("div");
+  projectsDiv.className = "projects-style";
 
   const gridParentDiv = document.createElement("div");
   gridParentDiv.className = "parents";
@@ -273,11 +273,11 @@ function displayPortfolioCommand() {
   let currentProjectIndex = 0; // Add this to keep track of the current project being displayed
 
   function displayOneProject() {
-    if (currentProjectIndex >= portfolio.length) {
+    if (currentProjectIndex >= projects.length) {
       return; // Stop if all projects have been displayed
     }
 
-    const project = portfolio[currentProjectIndex];
+    const project = projects[currentProjectIndex];
     const projectDiv = document.createElement("div");
     projectDiv.className = `projectDiv divs${currentProjectIndex + 1}`;
 
@@ -318,8 +318,8 @@ function displayPortfolioCommand() {
 
   displayOneProject(); // Start the process
 
-  portfolioDiv.appendChild(gridParentDiv);
-  commandsContainer.appendChild(portfolioDiv);
+  projectsDiv.appendChild(gridParentDiv);
+  commandsContainer.appendChild(projectsDiv);
 }
 
 // Displays the about me section of my website
@@ -423,7 +423,7 @@ function createNewInputLine() {
     help: displayHelpCommands,
     about: displayAboutMe,
     clear: clearText,
-    portfolio: displayPortfolioCommand,
+    projects: displayprojectsCommand,
     message: sendMessage,
     contact: displayContactCommands,
   };

@@ -35,9 +35,9 @@ npm run test
 
 👤 **Rosita Emakpo**
 
-* Twitter: [@lovelittlerose](https://twitter.com/lovelittlerose)
-* Github: [@ejero](https://github.com/ejero)
-* LinkedIn: [@rosita-emakpo](https://linkedin.com/in/rosita-emakpo)
+- Twitter: [@lovelittlerose](https://twitter.com/lovelittlerose)
+- Github: [@ejero](https://github.com/ejero)
+- LinkedIn: [@rosita-emakpo](https://linkedin.com/in/rosita-emakpo)
 
 ## 🤝 Contributing
 
@@ -52,5 +52,6 @@ Give a ⭐️ if this project helped you!
 Copyright © 2023 [Rosita Emakpo](https://github.com/ejero).<br />
 This project is [ISC](https://github.com/ejero/terminal-site/blob/master/LICENSE) licensed.
 
-***
+---
+
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
