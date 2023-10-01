@@ -52,10 +52,5 @@ Give a ⭐️ if this project helped you!
 Copyright © 2023 [Rosita Emakpo](https://github.com/ejero).<br />
 This project is [ISC](https://github.com/ejero/terminal-site/blob/master/LICENSE) licensed.
 
-<<<<<<< HEAD
----
-
-=======
 ***
->>>>>>> 433514dedf899e3636feab3bd371aa9e01584f09
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
