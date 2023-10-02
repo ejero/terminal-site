@@ -1,3 +1,79 @@
+/* Color themes for website */
+
+:root {
+  /* Main Colors */
+  --primary-body-bg-dark: linear-gradient(0deg, #264c6e 0%, #030c21 100%);
+  --primary-scrollbar-thumb-dark: #9e0a9b;
+  --primary-bg-div1: linear-gradient(0deg, #3a7bb4 0%, #022d8b 100%);
+  --primary-box-div1-shadow: #44818e;
+
+  /* Light Colors */
+  --light-body-bg: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+  --light-scrollbar-thumb: #feb2fd;
+  --light-bg-div1: linear-gradient(
+    0deg,
+    rgba(159, 70, 186, 1) 0%,
+    rgba(48, 4, 61, 1) 100%
+  );
+  --light-div1-box-shadow: #09bae2;
+  --light-help-contact-div-a: #7ff7f5;
+
+  /* Green color */
+  --green-body-bg-green: linear-gradient(
+    0deg,
+    rgba(7, 238, 199, 1) 0%,
+    rgba(3, 93, 73, 1) 100%
+  );
+  --primary-scrollbar-thumb-green: #084a08;
+  --green-bg-dv1: linear-gradient(
+    180deg,
+    rgba(3, 115, 96, 1) 0%,
+    rgba(1, 22, 17, 1) 100%
+  );
+  --green-box-div1-shadow: #44818e;
+}
+
+.main-theme {
+  --primary-body-bg-dark: linear-gradient(0deg, #264c6e 0%, #030c21 100%);
+  --primary-scrollbar-thumb-dark: #9e0a9b;
+  --primary-bg-div1: linear-gradient(0deg, #3a7bb4 0%, #022d8b 100%);
+  --primary-box-div1-shadow: #44818e;
+}
+.Light-theme {
+  --light-body-bg: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+  --light-scrollbar-thumb: #feb2fd;
+  --light-bg-div1: linear-gradient(
+    0deg,
+    rgba(159, 70, 186, 1) 0%,
+    rgba(48, 4, 61, 1) 100%
+  );
+  --light-div1-box-shadow: #09bae2;
+  --light-help-contact-div-a: #7ff7f5;
+}
+
+.green-theme {
+  --green-body-bg-green: linear-gradient(
+    0deg,
+    rgba(7, 238, 199, 1) 0%,
+    rgba(3, 93, 73, 1) 100%
+  );
+  --primary-scrollbar-thumb-green: #084a08;
+  --green-bg-dv1: linear-gradient(
+    180deg,
+    rgba(3, 115, 96, 1) 0%,
+    rgba(1, 22, 17, 1) 100%
+  );
+  --green-box-div1-shadow: #44818e;
+}
+
 body {
   font-family: sans-serif;
   margin: 0;
@@ -11,7 +87,12 @@ body {
   align-items: center; /* Vertically center the .parent */
   width: 100%;
   height: 100%;
-  background: linear-gradient(0deg, #264c6e 0%, #030c21 100%);
+  /* background: linear-gradient(0deg, #264c6e 0%, #030c21 100%); */
+  background: linear-gradient(
+    0deg,
+    rgba(7, 238, 199, 1) 0%,
+    rgba(3, 93, 73, 1) 100%
+  );
 }
 
 .parent {
@@ -21,7 +102,7 @@ body {
   grid-template-rows: 0.01fr 0.1fr 1fr 0.01fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  min-width: 80vw;
+  min-width: 70vw;
   max-height: 90vh;
   /* overflow-y: auto; */
   border-radius: 12px;
@@ -40,7 +121,7 @@ body {
 }
 
 .scrollable-content::-webkit-scrollbar-thumb {
-  background-color: #9e0a9b; /* Color of the scroll thumb */
+  background-color: #22b422; /* Color of the scroll thumb */
   border-radius: 6px;
 }
 
@@ -51,10 +132,15 @@ body {
 
 .div1 {
   grid-area: 1 / 1 / 5 / 5;
-  background: linear-gradient(0deg, #3a7bb4 0%, #022d8b 100%);
+  /* background: linear-gradient(0deg, #3a7bb4 0%, #022d8b 100%); */
+  background: linear-gradient(
+    180deg,
+    rgba(3, 115, 96, 1) 0%,
+    rgba(1, 22, 17, 1) 100%
+  );
   min-height: 40vh;
   border-radius: 10px;
-  box-shadow: 0px 4px 35px rgb(68, 129, 142);
+  box-shadow: 0px 4px 35px #a9f3be;
 }
 
 .div2 {
@@ -102,7 +188,7 @@ body {
 }
 
 .welcomeBanner {
-  color: rgb(253, 253, 253);
+  color: #fdfdfd;
   margin: 0;
   text-align: center;
 }
@@ -122,7 +208,7 @@ body {
 
 .prompt,
 .enteredCommand {
-  color: white;
+  color: #ffffff;
 }
 
 .prompt {
@@ -168,7 +254,7 @@ body {
 }
 
 .help-contact-div a {
-  color: rgb(16, 239, 236);
+  color: #05fff7;
   text-decoration: none;
   /* font-family: "DM Sans", sans-serif;
   font-family: "Lexend Deca", sans-serif;
@@ -276,7 +362,7 @@ body {
 }
 
 .githubLink:hover {
-  color: rgb(226, 158, 231);
+  color: #e29ee7;
 }
 
 .projectDesc {
@@ -330,7 +416,7 @@ body {
   padding: 0.5em 1em;
   border: none;
   background-color: #ff69b4;
-  color: white;
+  color: #ffffff;
   cursor: pointer;
   transition: background-color 0.3s;
   border-radius: 30px;
@@ -344,7 +430,7 @@ body {
 
 /* Form Submission fonfirmation */
 .submittedForm {
-  color: rgb(53, 191, 53);
+  color: #35bf35;
   font-size: 16px;
   font-style: italic;
   margin-top: 8px;

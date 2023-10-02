@@ -13,6 +13,11 @@ const helpCommands = [
     desc: "Send me a message. I'd love to hear from you!",
   },
 
+  {
+    cmd: "theme",
+    desc: "Changes color theme",
+  },
+
   { cmd: "clear", desc: "clear the screen" },
 ];
 
