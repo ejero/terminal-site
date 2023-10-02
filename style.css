@@ -21,7 +21,7 @@ body {
   grid-template-rows: 0.01fr 0.1fr 1fr 0.01fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  min-width: 80vw;
+  min-width: 60vw;
   max-height: 90vh;
   /* overflow-y: auto; */
   border-radius: 12px;
@@ -52,7 +52,7 @@ body {
 .div1 {
   grid-area: 1 / 1 / 5 / 5;
   background: linear-gradient(0deg, #3a7bb4 0%, #022d8b 100%);
-  min-height: 40vh;
+  min-height: 50vh;
   border-radius: 10px;
   box-shadow: 0px 4px 35px rgb(68, 129, 142);
 }
@@ -202,10 +202,11 @@ body {
 /* About me Styling */
 .about-section {
   color: #fff;
-  width: 70vw;
+  width: 40vw;
   margin: 9px;
   font-family: "DM Sans", sans-serif;
   font-weight: 200;
+  line-height: 23px;
 }
 /* Contact styles */
 .howDesc {

@@ -12,6 +12,10 @@ const helpCommands = [
     cmd: "message",
     desc: "Send me a message. I'd love to hear from you!",
   },
+  {
+    cmd: "secret",
+    desc: "Find out a secret!",
+  },
 
   { cmd: "clear", desc: "clear the screen" },
 ];
@@ -103,6 +107,13 @@ function typeText(element, text, delay, callback) {
   }
 
   type();
+}
+
+// Function to display my secret "ha ha"
+function displaySecret() {
+  const youtubeVideoURL = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+  // Open the YouTube video in a new tab/window
+  window.open(youtubeVideoURL, "_blank");
 }
 
 // Function to diplsay the contact commands
@@ -425,6 +436,7 @@ function createNewInputLine() {
     clear: clearText,
     projects: displayprojectsCommand,
     message: sendMessage,
+    secret: displaySecret,
     contact: displayContactCommands,
   };
 
