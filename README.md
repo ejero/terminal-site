@@ -17,7 +17,7 @@
 
 > Terminal Portfolio
 
-### 🏠 [View Project Here](https://www.iamrosita.com/)
+### 💻 [View Project Here](https://www.iamrosita.com/)
 
 ## Install
 
