@@ -15,7 +15,9 @@
   </a>
 </p>
 
-> Terminal Portfolio
+> ## Project Introduction
+Welcome to my terminal portfolio site! Built with a unique approach, this site allows users to experience an interactive terminal-like interface. By typing in custom commands, users can access various information and features in a familiar terminal environment. Whether it's exploring my projects, accessing my profile, or discovering more about my skills, this platform provides a seamless and engaging user experience reminiscent of a real terminal. Interact, explore, and discover with ease on this innovative terminal portfolio site.
+
 
 ### 💻 [View Project Here](https://www.iamrosita.com/)
 
