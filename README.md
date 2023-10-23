@@ -39,6 +39,15 @@ npm run test
 - Github: [@ejero](https://github.com/ejero)
 - LinkedIn: [@rosita-emakpo](https://linkedin.com/in/rosita-emakpo)
 
+## Technology Used
+
+- JavaScript
+- AWS Lambda
+- DynamoDB
+- API Gateway
+- AWS SNS
+
+
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/ejero/terminal-site/issues). You can also take a look at the [contributing guide](https://github.com/ejero/terminal-site/blob/master/CONTRIBUTING.md).
