@@ -22,5 +22,8 @@
     "readme-md-generator": "^1.0.0",
     "sequelize": "^6.33.0",
     "sqlite3": "^5.1.6"
+  },
+  "overrides": {
+    "validator": "13.15.22"
   }
 }
